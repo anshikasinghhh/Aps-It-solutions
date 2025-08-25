@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Solution - IT & AV Integration</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for a professional look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for professional aesthetics and animations */
+        :root {
+            --primary-color: #0d1a2b;
+            --secondary-color: #1a2a3a;
+            --accent-color: #0077b6;
+            --text-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+        }
+
+        /* Parallax effect on sections */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Custom animation for the lightning effect on the navbar */
+        .nav-lightning::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #0077b6, transparent);
+            animation: pulse 4s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .nav-lightning:hover::after {
+            opacity: 1;
+        }
+
+        @keyframes pulse {
+            0% { transform: scaleX(0); opacity: 0; }
+            50% { transform: scaleX(1); opacity: 1; }
+            100% { transform: scaleX(0); opacity: 0; }
+        }
+
+        /* Card hover effects */
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 119, 182, 0.4);
+            background-color: var(--secondary-color);
+        }
+        
+        /* Micro-animations for buttons */
+        .btn-animate {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-animate::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
+        }
+        .btn-animate:hover::before {
+            width: 200%;
+            height: 200%;
+            opacity: 1;
+        }
+
+        /* Carousel animation for feedback slider */
+        .feedback-slider {
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* Modal styling */
+        .modal {
+            background-color: rgba(0, 0, 0, 0.7);
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            transform: translateY(-50px);
+            transition: transform 0.3s ease-in-out;
+        }
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .contact-form-btn {
+            background-color: #0077b6; /* Aesthetically pleasing blue */
+            box-shadow: 0 5px 15px rgba(0, 119, 182, 0.4);
+        }
+        
+        /* Hide scrollbar but allow scrolling for better aesthetics */
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+        body::-webkit-scrollbar-thumb {
+            background-color: #1a2a3a;
+            border-radius: 4px;
+        }
+        body::-webkit-scrollbar-track {
+            background-color: #0d1a2b;
+        }
+    </style>
+</head>
+<body class="bg-primary-color text-text-color">
+
+    <!-- Header and Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-primary-color bg-opacity-90 backdrop-blur-md shadow-lg rounded-b-xl mx-2 mt-2">
+        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <!-- Logo/Site Name -->
+            <div class="text-2xl font-extrabold text-white">
+                Space Solution
+            </div>
+            
+            <!-- Navigation Links -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#hero" class="relative group text-gray-300 hover:text-white transition-colors duration-300 nav-lightning">
+                    Home
+                </a>
+                <a href="#about" class="relative group text-gray-300 hover:text-white transition-colors duration-300 nav-lightning">
+                    About Us
+                </a>
+                <a href="#services" class="relative group text-gray-300 hover:text-white transition-colors duration-300 nav-lightning">
+                    Our Services
+                </a>
+                <a href="#feedback" class="relative group text-gray-300 hover:text-white transition-colors duration-300 nav-lightning">
+                    Feedback
+                </a>
+                <button onclick="openContactModal()" class="relative group text-gray-300 hover:text-white transition-colors duration-300 nav-lightning">
+                    Contact
+                </button>
+            </div>
+            
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button class="md:hidden text-gray-300 hover:text-white focus:outline-none" onclick="toggleMobileMenu()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </nav>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 py-4 space-y-4 text-center">
+            <a href="#hero" class="block text-gray-300 hover:text-white transition-colors duration-300">Home</a>
+            <a href="#about" class="block text-gray-300 hover:text-white transition-colors duration-300">About Us</a>
+            <a href="#services" class="block text-gray-300 hover:text-white transition-colors duration-300">Our Services</a>
+            <a href="#feedback" class="block text-gray-300 hover:text-white transition-colors duration-300">Feedback</a>
+            <button onclick="openContactModal()" class="block text-gray-300 hover:text-white transition-colors duration-300">Contact</button>
+        </div>
+    </header>
+
+    <!-- Hero Section (Parallax) -->
+    <section id="hero" class="parallax bg-cover bg-center h-screen flex items-center justify-center text-center text-white" style="background-image: url('https://placehold.co/1920x1080/0d1a2b/ffffff?text=IT+Infrastructure+Solutions');">
+        <div class="bg-black bg-opacity-50 p-10 rounded-xl shadow-lg max-w-2xl mx-4">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 animate-fade-in-up">Empowering Smart Workspaces</h1>
+            <p class="text-lg md:text-xl mb-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.5s;">
+                Cutting-edge IT, AV integration, and robust security for your success.
+            </p>
+            <button class="btn-animate bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105" onclick="openContactModal()">
+                Contact Us
+            </button>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="container mx-auto px-6 py-20 my-20">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4">About Space Solution</h2>
+            <p class="text-lg max-w-3xl mx-auto text-gray-400">
+                We are a leading provider of innovative technology solutions. Our mission is to empower modern businesses with reliable IT infrastructure, seamless connectivity, and robust security, driving productivity and success.
+            </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1">
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    Space Solution is dedicated to delivering bespoke IT and AV integration services. We specialize in creating smart workspaces that are not only technologically advanced but also intuitive and secure. Our team of experts works closely with clients to understand their unique needs, providing customized hardware and software solutions that optimize performance and efficiency.
+                </p>
+                <p class="text-gray-300 leading-relaxed">
+                    From state-of-the-art networking setups to comprehensive security systems and audiovisual solutions, we ensure every aspect of your technological environment is meticulously planned and executed. Our commitment to excellence guarantees a seamless and reliable experience for your business.
+                </p>
+            </div>
+            <div class="order-1 md:order-2">
+                <img src="https://placehold.co/800x500/1a2a3a/ffffff?text=Our+Team+Working" alt="Our team working" class="rounded-3xl shadow-xl transform transition-transform duration-500 hover:scale-105">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services/Products Section (Parallax) -->
+    <section id="services" class="parallax bg-gray-900 bg-opacity-70 py-20 px-6 my-20" style="background-image: url('https://placehold.co/1920x1080/0d1a2b/ffffff?text=Networking+Solutions');">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Our Services</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <!-- Product Card 1 -->
+                <div class="product-card bg-secondary-color p-8 rounded-3xl shadow-lg relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-red-600 text-white text-xs font-bold px-4 py-2 rounded-bl-xl transform rotate-45 translate-x-1/4 -translate-y-1/4">
+                        15% OFF
+                    </div>
+                    <img src="https://placehold.co/600x400/2a3a4a/ffffff?text=AV+Integration" alt="AV Integration" class="w-full h-48 object-cover rounded-xl mb-6 shadow-md">
+                    <h3 class="text-2xl font-bold mb-2">AV Integration</h3>
+                    <p class="text-gray-400 mb-4">
+                        Seamlessly integrate audio and visual technologies for presentations, conferences, and collaborative spaces.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <button class="quick-view-btn text-blue-400 hover:underline text-sm font-semibold">Quick View</button>
+                        <a href="#" class="btn-animate bg-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-transform transform hover:scale-110">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product Card 2 -->
+                <div class="product-card bg-secondary-color p-8 rounded-3xl shadow-lg relative overflow-hidden">
+                    <img src="https://placehold.co/600x400/2a3a4a/ffffff?text=Cyber+Security" alt="Cyber Security" class="w-full h-48 object-cover rounded-xl mb-6 shadow-md">
+                    <h3 class="text-2xl font-bold mb-2">Cyber Security</h3>
+                    <p class="text-gray-400 mb-4">
+                        Protect your business with robust security solutions, including firewalls, data encryption, and network monitoring.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <button class="quick-view-btn text-blue-400 hover:underline text-sm font-semibold">Quick View</button>
+                        <a href="#" class="btn-animate bg-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-transform transform hover:scale-110">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card bg-secondary-color p-8 rounded-3xl shadow-lg relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-emerald-600 text-white text-xs font-bold px-4 py-2 rounded-bl-xl transform rotate-45 translate-x-1/4 -translate-y-1/4">
+                        New
+                    </div>
+                    <img src="https://placehold.co/600x400/2a3a4a/ffffff?text=Networking+Setup" alt="Networking Setup" class="w-full h-48 object-cover rounded-xl mb-6 shadow-md">
+                    <h3 class="text-2xl font-bold mb-2">Networking Solutions</h3>
+                    <p class="text-gray-400 mb-4">
+                        Design and implement high-performance, reliable networks that ensure seamless connectivity across your organization.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <button class="quick-view-btn text-blue-400 hover:underline text-sm font-semibold">Quick View</button>
+                        <a href="#" class="btn-animate bg-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-transform transform hover:scale-110">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section (Slider) -->
+    <section id="feedback" class="container mx-auto px-6 py-20 my-20">
+        <h2 class="text-4xl font-bold text-center mb-16">What Our Clients Say</h2>
+        <div class="relative max-w-4xl mx-auto overflow-hidden rounded-3xl shadow-xl">
+            <!-- Slider Container -->
+            <div id="feedback-slider" class="feedback-slider flex w-full">
+                <!-- Feedback 1 -->
+                <div class="flex-shrink-0 w-full p-8 bg-secondary-color rounded-3xl">
+                    <div class="flex items-center mb-6">
+                        <img src="https://placehold.co/64x64/0077b6/ffffff?text=JP" alt="Client" class="rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-xl">Jane P.</h4>
+                            <p class="text-gray-400">CEO, Tech Innovators</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed italic">
+                        "Space Solution transformed our office with their AV integration expertise. The process was seamless, and the result is a truly modern and efficient workspace. Their team is professional and highly skilled."
+                    </p>
+                </div>
+                <!-- Feedback 2 -->
+                <div class="flex-shrink-0 w-full p-8 bg-secondary-color rounded-3xl">
+                    <div class="flex items-center mb-6">
+                        <img src="https://placehold.co/64x64/0077b6/ffffff?text=MS" alt="Client" class="rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-xl">Mark S.</h4>
+                            <p class="text-gray-400">Founder, Global Connect</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed italic">
+                        "The security solutions provided by Space Solution have given us peace of mind. Our data is more secure than ever, and their ongoing support is top-notch. I highly recommend their services."
+                    </p>
+                </div>
+                <!-- Feedback 3 -->
+                <div class="flex-shrink-0 w-full p-8 bg-secondary-color rounded-3xl">
+                    <div class="flex items-center mb-6">
+                        <img src="https://placehold.co/64x64/0077b6/ffffff?text=AC" alt="Client" class="rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-xl">Anna C.</h4>
+                            <p class="text-gray-400">Project Manager, Creative Minds</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed italic">
+                        "We needed a complete overhaul of our networking infrastructure, and Space Solution delivered beyond our expectations. Our team can now collaborate efficiently without any connectivity issues."
+                    </p>
+                </div>
+                <!-- Feedback 4 -->
+                <div class="flex-shrink-0 w-full p-8 bg-secondary-color rounded-3xl">
+                    <div class="flex items-center mb-6">
+                        <img src="https://placehold.co/64x64/0077b6/ffffff?text=TS" alt="Client" class="rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-xl">Tom S.</h4>
+                            <p class="text-gray-400">Operations Director, Future Corp</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed italic">
+                        "Their hardware solutions are fantastic and reliable. The team at Space Solution helped us select and install the perfect equipment for our needs, and the performance has been excellent."
+                    </p>
+                </div>
+            </div>
+            <!-- Slider Controls -->
+            <button class="absolute top-1/2 left-4 -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full hover:bg-blue-600 transition" onclick="slideFeedback(-1)">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+            <button class="absolute top-1/2 right-4 -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full hover:bg-blue-600 transition" onclick="slideFeedback(1)">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- Quick View Modal (hidden by default) -->
+    <div id="quick-view-modal" class="modal fixed inset-0 flex items-center justify-center p-4 z-50">
+        <div class="modal-content bg-primary-color p-8 rounded-3xl shadow-xl max-w-2xl w-full relative">
+            <button class="absolute top-4 right-4 text-gray-500 hover:text-white" onclick="closeModal('quick-view-modal')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <img id="modal-image" src="" alt="Product Image" class="w-full h-auto rounded-xl">
+                </div>
+                <div>
+                    <h3 id="modal-title" class="text-3xl font-bold mb-4"></h3>
+                    <p id="modal-description" class="text-gray-300 mb-6"></p>
+                    <a href="#" class="btn-animate bg-blue-600 text-white font-semibold py-3 px-8 rounded-full transition-transform transform hover:scale-105">
+                        View Full Details
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contact Form Modal (hidden by default) -->
+    <div id="contact-modal" class="modal fixed inset-0 flex items-center justify-center p-4 z-50">
+        <div class="modal-content bg-primary-color p-8 rounded-3xl shadow-xl max-w-lg w-full relative">
+            <button class="absolute top-4 right-4 text-gray-500 hover:text-white" onclick="closeModal('contact-modal')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h3 class="text-3xl font-bold mb-6 text-center">Get in Touch</h3>
+            <!-- The form will be functional on the frontend, showing a success message on submission -->
+            <form id="contact-form" class="space-y-6">
+                <div>
+                    <label for="name" class="block text-gray-400 mb-2">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required class="w-full p-3 rounded-lg bg-secondary-color border border-gray-600 focus:ring-2 focus:ring-blue-600 outline-none">
+                </div>
+                <div>
+                    <label for="email" class="block text-gray-400 mb-2">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="john.doe@example.com" required class="w-full p-3 rounded-lg bg-secondary-color border border-gray-600 focus:ring-2 focus:ring-blue-600 outline-none">
+                </div>
+                <div>
+                    <label for="message" class="block text-gray-400 mb-2">Your Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell us about your project..." required class="w-full p-3 rounded-lg bg-secondary-color border border-gray-600 focus:ring-2 focus:ring-blue-600 outline-none"></textarea>
+                </div>
+                <button type="submit" class="btn-animate w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105">
+                    Send Message
+                </button>
+            </form>
+            <!-- Success message container (hidden by default) -->
+            <div id="success-message" class="hidden text-center text-green-400 mt-4">
+                Thank you for your message! We will get back to you shortly.
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="container mx-auto px-6 py-20 my-20">
+        <div class="text-center">
+            <h2 class="text-4xl font-bold mb-6">Let's Connect</h2>
+            <p class="text-lg max-w-2xl mx-auto text-gray-400 mb-8">
+                Ready to transform your workspace? Contact us today to discuss your unique IT and AV integration needs.
+            </p>
+            <button class="btn-animate bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105" onclick="openContactModal()">
+                Contact Us
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-color py-12">
+        <div class="container mx-auto px-6 grid md:grid-cols-4 gap-8 text-center md:text-left">
+            <!-- About -->
+            <div class="space-y-4">
+                <h4 class="text-xl font-bold mb-2">Space Solution</h4>
+                <p class="text-gray-400">
+                    Empowering your business with cutting-edge IT infrastructure, AV integration, and robust security solutions.
+                </p>
+            </div>
+            <!-- Quick Links -->
+            <div class="space-y-4">
+                <h4 class="text-xl font-bold mb-2">Quick Links</h4>
+                <ul class="text-gray-400 space-y-2">
+                    <li><a href="#hero" class="hover:text-white transition">Home</a></li>
+                    <li><a href="#about" class="hover:text-white transition">About Us</a></li>
+                    <li><a href="#services" class="hover:text-white transition">Our Services</a></li>
+                    <li><a href="#feedback" class="hover:text-white transition">Feedback</a></li>
+                    <li><button onclick="openContactModal()" class="hover:text-white transition">Contact</button></li>
+                </ul>
+            </div>
+            <!-- Contact Info -->
+            <div class="space-y-4">
+                <h4 class="text-xl font-bold mb-2">Contact Us</h4>
+                <ul class="text-gray-400 space-y-2">
+                    <li><i class="fas fa-phone mr-2 text-blue-400"></i><a href="tel:+1234567890" class="hover:text-white transition">+1 (234) 567-890</a></li>
+                    <li><i class="fas fa-envelope mr-2 text-blue-400"></i><a href="mailto:info@spacesolution.com" class="hover:text-white transition">info@spacesolution.com</a></li>
+                    <li><i class="fas fa-map-marker-alt mr-2 text-blue-400"></i><span class="hover:text-white transition">123 Tech Lane, Innovation City</span></li>
+                </ul>
+            </div>
+            <!-- Social Media -->
+            <div class="space-y-4">
+                <h4 class="text-xl font-bold mb-2">Follow Us</h4>
+                <div class="flex justify-center md:justify-start space-x-6 text-2xl">
+                    <a href="#" target="_blank" class="text-gray-400 hover:text-blue-500 transition">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" target="_blank" class="text-gray-400 hover:text-blue-400 transition">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" target="_blank" class="text-gray-400 hover:text-emerald-500 transition">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 mt-8 pt-8 border-t border-gray-700">
+            &copy; 2024 Space Solution. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Feedback slider functionality
+        const slider = document.getElementById('feedback-slider');
+        const slides = slider.children.length;
+        let currentSlide = 0;
+
+        function slideFeedback(direction) {
+            currentSlide = (currentSlide + direction + slides) % slides;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // --- Modal Functionality ---
+
+        // Generic function to open a modal
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+            }
+        }
+
+        // Generic function to close a modal
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        // Quick View Modal functionality
+        const quickViewModal = document.getElementById('quick-view-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDescription = document.getElementById('modal-description');
+        const modalImage = document.getElementById('modal-image');
+
+        function openQuickView(title, description, imageUrl) {
+            modalTitle.textContent = title;
+            modalDescription.textContent = description;
+            modalImage.src = imageUrl;
+            openModal('quick-view-modal');
+        }
+
+        // Add event listeners for all Quick View buttons
+        document.querySelectorAll('.quick-view-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const card = button.closest('.product-card');
+                const title = card.querySelector('h3').textContent;
+                const description = card.querySelector('p').textContent;
+                const imageUrl = card.querySelector('img').src;
+                openQuickView(title, description, imageUrl);
+            });
+        });
+
+        // Close modal when clicking outside the content
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
+        
+        // --- New Contact Modal functionality ---
+        const contactForm = document.getElementById('contact-form');
+        const successMessage = document.getElementById('success-message');
+
+        function openContactModal() {
+            // Reset form and hide success message before opening
+            contactForm.reset();
+            successMessage.classList.add('hidden');
+            // Show the modal
+            openModal('contact-modal');
+        }
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+            
+            // In a real application, you would send this data to a server
+            // using an API call (e.g., fetch()).
+            
+            console.log('Form submitted:', {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            });
+
+            // Simulate a successful submission
+            contactForm.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+
+            // You can optionally close the modal after a few seconds
+            setTimeout(() => {
+                closeModal('contact-modal');
+                contactForm.classList.remove('hidden'); // Reset for next time
+            }, 5000); // Closes after 5 seconds
+        });
+    </script>
+
+</body>
+</html>

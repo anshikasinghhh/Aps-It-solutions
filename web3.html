@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Hardware Store</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <!-- AOS for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-blue: #007bff;
+            --dark-blue: #0056b3;
+            --light-gray: #f8f9fa;
+            --medium-gray: #6c757d;
+            --white: #ffffff;
+            --neon-glow: rgba(0, 123, 255, 0.5);
+            --transition-time: 0.3s;
+            --border-radius: 10px;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --glow-shadow: 0 0 15px var(--neon-glow);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--medium-gray);
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: var(--white);
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            box-shadow: var(--glow-shadow);
+            transition: box-shadow var(--transition-time) ease-in-out;
+        }
+
+        .navbar:hover {
+            box-shadow: 0 0 20px var(--neon-glow);
+        }
+
+        .nav-link {
+            color: var(--primary-blue) !important;
+            margin: 0 15px;
+            transition: transform var(--transition-time) ease-in-out, color var(--transition-time) ease-in-out;
+        }
+
+        .nav-link:hover {
+            transform: scale(1.05);
+            color: var(--dark-blue) !important;
+        }
+
+        .navbar-brand {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        #home {
+            height: 100vh;
+            position: relative;
+            background: url('Screenshot 2025-08-14 124620.png') center/cover fixed; /* Parallax effect */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            
+        }
+
+        #home .overlay {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            color: var(--white);
+            text-shadow: 0 0 5px var(--neon-glow);
+        }
+
+        #home h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        #home .btn {
+            background-color: var(--primary-blue);
+            border: none;
+            transition: background-color var(--transition-time) ease-in-out, box-shadow var(--transition-time) ease-in-out;
+        }
+
+        #home .btn:hover {
+            background-color: var(--dark-blue);
+            box-shadow: var(--glow-shadow);
+        }
+
+        /* About Us Section */
+        #about {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        #about img {
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* Products Section */
+        #products {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+
+        .product-card {
+            border: none;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: transform var(--transition-time) ease-in-out, box-shadow var(--transition-time) ease-in-out;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--glow-shadow);
+        }
+
+        .product-card img {
+            border-top-left-radius: var(--border-radius);
+            border-top-right-radius: var(--border-radius);
+        }
+
+        .product-card .btn {
+            background-color: var(--primary-blue);
+            border: none;
+            transition: background-color var(--transition-time) ease-in-out;
+        }
+
+        .product-card .btn:hover {
+            background-color: var(--dark-blue);
+        }
+
+        /* Feedback Section */
+        #feedback {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .feedback-card {
+            border: none;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            padding: 20px;
+            transition: transform var(--transition-time) ease-in-out;
+        }
+
+        .feedback-card img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+        }
+
+        .stars {
+            color: #ffc107;
+        }
+
+        .carousel-control-prev, .carousel-control-next {
+            filter: invert(1); /* Make arrows white for visibility */
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--white);
+            margin: 0 10px;
+            transition: color var(--transition-time) ease-in-out, box-shadow var(--transition-time) ease-in-out;
+        }
+
+        footer a:hover {
+            color: var(--light-gray);
+            box-shadow: var(--glow-shadow);
+        }
+
+        footer i {
+            font-size: 1.5rem;
+        }
+
+        /* Modal */
+        .modal-content {
+            background: transparent;
+            border: none;
+        }
+
+        .modal-backdrop {
+            backdrop-filter: blur(5px);
+        }
+
+        .modal iframe {
+            width: 100%;
+            height: 80vh;
+            border-radius: var(--border-radius);
+        }
+
+        /* General Animations */
+        section {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* Use AOS for fade-in on scroll */
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">IT Hardware Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#feedback">Feedback</a></li>
+                    <li class="nav-item">
+                        <button class="nav-link btn" data-bs-toggle="modal" data-bs-target="#contactModal">Get in Touch</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Modal with Google Form -->
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeExampleFormIDHere/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                <!-- Replace the src with your actual Google Form embed URL -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Home/Landing Section -->
+    <section id="home" class="hero" data-aos="fade-up">
+        <div class="overlay">
+            <h1>Discover Premium IT Hardware</h1>
+            <a href="#products" class="btn btn-lg btn-primary">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="container" data-aos="fade-up">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2>About Us</h2>
+                <p>We are a leading provider of high-quality IT hardware products, dedicated to empowering businesses and individuals with cutting-edge technology. Our mission is to deliver reliable solutions that drive innovation and efficiency.</p>
+                <p>Our values include integrity, customer satisfaction, and continuous improvement. With years of experience, we source the best products from trusted manufacturers.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="https://placehold.co/600x400?text=About+Us+Image" alt="About Us" class="img-fluid">
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="container" data-aos="fade-up">
+        <h2 class="text-center mb-5">Our Products</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="https://placehold.co/400x300?text=Product+1" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                        <h5 class="card-title">High-Performance Laptop</h5>
+                        <p class="card-text">$999</p>
+                        <button class="btn btn-primary w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="https://placehold.co/400x300?text=Product+2" class="card-img-top" alt="Product 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Gaming Monitor</h5>
+                        <p class="card-text">$299</p>
+                        <button class="btn btn-primary w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="https://placehold.co/400x300?text=Product+3" class="card-img-top" alt="Product 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Wireless Keyboard</h5>
+                        <p class="card-text">$49</p>
+                        <button class="btn btn-primary w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="https://placehold.co/400x300?text=Product+4" class="card-img-top" alt="Product 4">
+                    <div class="card-body">
+                        <h5 class="card-title">External SSD</h5>
+                        <p class="card-text">$129</p>
+                        <button class="btn btn-primary w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="https://placehold.co/400x300?text=Product+5" class="card-img-top" alt="Product 5">
+                    <div class="card-body">
+                        <h5 class="card-title">Network Router</h5>
+                        <p class="card-text">$199</p>
+                        <button class="btn btn-primary w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="https://placehold.co/400x300?text=Product+6" class="card-img-top" alt="Product 6">
+                    <div class="card-body">
+                        <h5 class="card-title">Mechanical Mouse</h5>
+                        <p class="card-text">$39</p>
+                        <button class="btn btn-primary w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section id="feedback" class="container" data-aos="fade-up">
+        <h2 class="text-center mb-5">Customer Feedback</h2>
+        <div id="feedbackCarousel" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card feedback-card">
+                                <img src="https://placehold.co/100x100?text=User+1" alt="User 1">
+                                <h5>John Doe</h5>
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <p>"Excellent products and fast delivery!"</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card feedback-card">
+                                <img src="https://placehold.co/100x100?text=User+2" alt="User 2">
+                                <h5>Jane Smith</h5>
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                                <p>"Great quality hardware at affordable prices."</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card feedback-card">
+                                <img src="https://placehold.co/100x100?text=User+3" alt="User 3">
+                                <h5>Mike Johnson</h5>
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <p>"Highly recommend for IT needs."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card feedback-card">
+                                <img src="https://placehold.co/100x100?text=User+4" alt="User 4">
+                                <h5>Emily Davis</h5>
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                                <p>"Outstanding customer service."</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card feedback-card">
+                                <img src="https://placehold.co/100x100?text=User+5" alt="User 5">
+                                <h5>Chris Brown</h5>
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <p>"Reliable and durable products."</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card feedback-card">
+                                <img src="https://placehold.co/100x100?text=User+6" alt="User 6">
+                                <h5>Sarah Wilson</h5>
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <p>"Best place for IT hardware."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#feedbackCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#feedbackCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Email: info@ithardwarestore.com | Phone: +1 (123) 456-7890 | Address: 123 Tech Street, City, State, ZIP</p>
+            <a href="mailto:info@ithardwarestore.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/company/ithardwarestore"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/ithardwarestore"><i class="fab fa-twitter"></i></a>
+            <a href="tel:+11234567890"><i class="fas fa-phone"></i></a>
+            <a href="https://wa.me/11234567890"><i class="fab fa-whatsapp"></i></a>
+            <p class="mt-3">&copy; 2025 IT Hardware Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+    </script>
+</body>
+</html>
