@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSync Solutions - Cutting-Edge IT Infrastructure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        /* Hero Section with Parallax */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;
+            opacity: 0.2;
+            transform: translateZ(0);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(238, 90, 36, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(238, 90, 36, 0.6);
+        }
+
+        /* Discount Banner */
+        .discount-banner {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        .discount-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .quick-view-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .quick-view-btn:hover {
+            background: #1d4ed8;
+            transform: scale(1.05);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-btn {
+            background: white;
+            color: #667eea;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Feedback Section */
+        .feedback {
+            padding: 5rem 0;
+            background: #f8fafc;
+        }
+
+        .feedback-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .feedback-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .feedback-card {
+            min-width: 100%;
+            background: white;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .feedback-card .stars {
+            color: #fbbf24;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feedback-card p {
+            font-size: 1.1rem;
+            color: #64748b;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .feedback-card .author {
+            font-weight: 600;
+            color: #1a202c;
+        }
+
+        .feedback-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .feedback-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .feedback-dot.active {
+            background: #667eea;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            animation: slideIn 0.3s ease;
+        }
+
+        .modal h3 {
+            color: #1a202c;
+            margin-bottom: 1rem;
+        }
+
+        .modal p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #64748b;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">TechSync Solutions</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#feedback">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Discount Banner -->
+    <div class="discount-banner">
+        <div class="discount-text">
+            🎉 LIMITED TIME: 25% OFF on all IT Infrastructure Solutions! Contact us today! 🎉
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Cutting-Edge IT Solutions</h1>
+            <p>Empowering modern businesses with reliable technology, seamless connectivity, and robust security for your success</p>
+            <a href="#services" class="cta-button">Explore Our Solutions</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Premium Services</h2>
+            <p class="section-subtitle">Comprehensive IT solutions tailored for modern businesses</p>
+            
+            <div class="services-grid">
+                <div class="service-card" data-service="infrastructure">
+                    <div class="service-icon">🏢</div>
+                    <h3>IT Infrastructure</h3>
+                    <p>Scalable and robust IT infrastructure solutions designed to grow with your business needs.</p>
+                    <button class="quick-view-btn" onclick="openQuickView('infrastructure')">Quick View</button>
+                </div>
+
+                <div class="service-card" data-service="av-integration">
+                    <div class="service-icon">📺</div>
+                    <h3>AV Integration</h3>
+                    <p>Professional audio-visual integration for conference rooms, offices, and smart workspaces.</p>
+                    <button class="quick-view-btn" onclick="openQuickView('av-integration')">Quick View</button>
+                </div>
+
+                <div class="service-card" data-service="networking">
+                    <div class="service-icon">🌐</div>
+                    <h3>Networking Solutions</h3>
+                    <p>High-performance networking infrastructure ensuring seamless connectivity across your organization.</p>
+                    <button class="quick-view-btn" onclick="openQuickView('networking')">Quick View</button>
+                </div>
+
+                <div class="service-card" data-service="security">
+                    <div class="service-icon">🔒</div>
+                    <h3>Security Systems</h3>
+                    <p>Comprehensive cybersecurity and physical security solutions to protect your business assets.</p>
+                    <button class="quick-view-btn" onclick="openQuickView('security')">Quick View</button>
+                </div>
+
+                <div class="service-card" data-service="hardware">
+                    <div class="service-icon">💻</div>
+                    <h3>Hardware Solutions</h3>
+                    <p>Premium hardware procurement, installation, and maintenance services for optimal performance.</p>
+                    <button class="quick-view-btn" onclick="openQuickView('hardware')">Quick View</button>
+                </div>
+
+                <div class="service-card" data-service="support">
+                    <div class="service-icon">🛠️</div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock technical support and maintenance to keep your systems running smoothly.</p>
+                    <button class="quick-view-btn" onclick="openQuickView('support')">Quick View</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Why Choose TechSync Solutions?</h2>
+                    <p>With over a decade of experience in the IT industry, we specialize in delivering cutting-edge technology solutions that transform businesses. Our expert team combines innovation with reliability to create smart workspaces that drive productivity and growth.</p>
+                    <p>From small startups to enterprise organizations, we've helped hundreds of businesses modernize their IT infrastructure, enhance security, and achieve seamless connectivity across all operations.</p>
+                    <ul style="color: #64748b; margin: 1.5rem 0; padding-left: 1.5rem;">
+                        <li>10+ years of industry expertise</li>
+                        <li>500+ successful projects completed</li>
+                        <li>24/7 dedicated support team</li>
+                        <li>Industry-leading security standards</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1560472355-536de3962603?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Modern office workspace">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section class="feedback" id="feedback">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="feedback-slider">
+                <div class="feedback-track" id="feedbackTrack">
+                    <div class="feedback-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"TechSync transformed our entire IT infrastructure. Their team's expertise and professionalism exceeded our expectations. Our productivity has increased by 40% since the implementation."</p>
+                        <div class="author">- Sarah Johnson, CEO at InnovaCorp</div>
+                    </div>
+                    <div class="feedback-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Outstanding AV integration services! They created a seamless conference room experience that impressed all our clients. The quality and attention to detail is remarkable."</p>
+                        <div class="author">- Michael Chen, CTO at TechFlow</div>
+                    </div>
+                    <div class="feedback-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Their networking solutions provided us with the reliability and speed we desperately needed. Zero downtime in the past 8 months since implementation!"</p>
+                        <div class="author">- Emily Rodriguez, IT Director at DataSync</div>
+                    </div>
+                    <div class="feedback-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"The security implementation was thorough and comprehensive. We feel completely protected and their 24/7 support gives us peace of mind."</p>
+                        <div class="author">- David Thompson, Operations Manager</div>
+                    </div>
+                    <div class="feedback-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"From hardware procurement to installation, everything was handled professionally. Their team made the entire process seamless and stress-free."</p>
+                        <div class="author">- Lisa Park, Finance Director at GrowthTech</div>
+                    </div>
+                </div>
+                <div class="feedback-nav">
+                    <div class="feedback-dot active" onclick="showFeedback(0)"></div>
+                    <div class="feedback-dot" onclick="showFeedback(1)"></div>
+                    <div class="feedback-dot" onclick="showFeedback(2)"></div>
+                    <div class="feedback-dot" onclick="showFeedback(3)"></div>
+                    <div class="feedback-dot" onclick="showFeedback(4)"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Get in touch with our experts for a free consultation and quote</p>
+            <a href="#" class="contact-btn" onclick="openContactForm()">Contact Us Now</a>
+        </div>
+    </section>
+
+    <!-- Quick View Modal -->
+    <div class="modal" id="quickViewModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <h3 id="modalTitle"></h3>
+            <p id="modalContent"></p>
+            <img id="modalImage" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-top: 1rem;" alt="">
+        </div>
+    </div>
+
+    <script>
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero::before');
+            const speed = scrolled * 0.5;
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Feedback slider
+        let currentFeedback = 0;
+        const feedbackCount = 5;
+
+        function showFeedback(index) {
+            const track = document.getElementById('feedbackTrack');
+            const dots = document.querySelectorAll('.feedback-dot');
+            
+            currentFeedback = index;
+            track.style.transform = `translateX(-${index * 100}%)`;
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        // Auto-slide feedback
+        setInterval(() => {
+            currentFeedback = (currentFeedback + 1) % feedbackCount;
+            showFeedback(currentFeedback);
+        }, 5000);
+
+        // Quick view modal
+        const serviceDetails = {
+            'infrastructure': {
+                title: 'IT Infrastructure Solutions',
+                content: 'Comprehensive IT infrastructure including server setup, cloud migration, data center management, and scalable architecture design. We provide end-to-end solutions from planning to implementation.',
+                image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+            },
+            'av-integration': {
+                title: 'AV Integration Services',
+                content: 'Professional audio-visual integration for conference rooms, boardrooms, and collaborative spaces. Including video conferencing, digital signage, sound systems, and smart room automation.',
+                image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80'
+            },
+            'networking': {
+                title: 'Networking Solutions',
+                content: 'High-performance networking infrastructure including LAN/WAN setup, wireless networks, network security, load balancing, and network monitoring solutions for optimal connectivity.',
+                image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+            },
+            'security': {
+                title: 'Security Systems',
+                content: 'Comprehensive security solutions including cybersecurity, firewall management, intrusion detection, access control systems, surveillance, and compliance management.',
+                image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+            },
+            'hardware': {
+                title: 'Hardware Solutions',
+                content: 'Premium hardware procurement, installation, and maintenance including servers, workstations, networking equipment, storage solutions, and peripheral devices.',
+                image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+            },
+            'support': {
+                title: '24/7 Technical Support',
+                content: 'Round-the-clock technical support including remote monitoring, preventive maintenance, emergency response, help desk services, and on-site technical assistance.',
+                image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+            }
+        };
+
+        function openQuickView(service) {
+            const modal = document.getElementById('quickViewModal');
+            const details = serviceDetails[service];
+            
+            document.getElementById('modalTitle').textContent = details.title;
+            document.getElementById('modalContent').textContent = details.content;
+            document.getElementById('modalImage').src = details.image;
+            
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('quickViewModal').style.display = 'none';
+        }
+
+        // Contact form function
+        function openContactForm() {
+            const formUrl = 'https://forms.gle/YourGoogleFormIdHere';
+            window.open(formUrl, '_blank');
+        }
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('quickViewModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechHardware Inc. - IT Hardware Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Parallax effect for hero */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-white font-sans antialiased">
+
+    <!-- Navbar: Light bluish, sticky -->
+    <nav class="bg-blue-100 sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-800">TechHardware</div>
+            <ul class="flex space-x-6 text-blue-700">
+                <li><a href="#home" class="hover:text-blue-500 transition duration-300">Home</a></li>
+                <li><a href="#about" class="hover:text-blue-500 transition duration-300">About</a></li>
+                <li><a href="#services" class="hover:text-blue-500 transition duration-300">Services</a></li>
+                <li><a href="#partners" class="hover:text-blue-500 transition duration-300">Partners</a></li>
+                <li><a href="#feedback" class="hover:text-blue-500 transition duration-300">Feedback</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section: White bg with background image, parallax -->
+    <section id="home" class="relative h-screen parallax" style="background-image: url('https://via.placeholder.com/1920x1080?text=High-Tech+Hardware+Background');">
+        <div class="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent"></div>
+        <div class="container mx-auto px-4 h-full flex items-center justify-center text-center">
+            <div class="max-w-3xl">
+                <h1 class="text-5xl font-bold text-blue-900 mb-4 animate-fade-in">Innovative IT Hardware Solutions</h1>
+                <p class="text-xl text-blue-800 mb-8">Empowering businesses with cutting-edge hardware for seamless performance and reliability.</p>
+                <a href="#services" class="bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 transition duration-300">Explore Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+                <img src="https://via.placeholder.com/600x400?text=About+TechHardware" alt="About Us" class="rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="text-4xl font-bold text-blue-900 mb-6">About TechHardware</h2>
+                <p class="text-lg text-gray-700 leading-relaxed">TechHardware is a dynamic IT hardware startup dedicated to delivering high-quality products including servers, workstations, networking equipment, and custom-built systems. Founded with a passion for technology, we focus on innovation, reliability, and customer satisfaction to help businesses thrive in the digital age.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Services Section: 9 cards, 3 per row, hover blue -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-blue-900 text-center mb-12">Our Services & Products</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:border-blue-500 border-2 border-transparent transition duration-300 transform hover:scale-105">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">Custom Workstations</h3>
+                    <p class="text-gray-600">Tailored high-performance workstations for creative professionals and engineers.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:border-blue-500 border-2 border-transparent transition duration-300 transform hover:scale-105">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">Server Solutions</h3>
+                    <p class="text-gray-600">Reliable servers for data centers and cloud infrastructure needs.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:border-blue-500 border-2 border-transparent transition duration-300 transform hover:scale-105">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">Networking Equipment</h3>
+                    <p class="text-gray-600">Switches, routers, and firewalls for secure and efficient networks.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:border-blue-500 border-2 border-transparent transition duration-300 transform hover:scale-105">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">Storage Devices</h3>
+                    <p class="text-gray-600">High-capacity SSDs and HDDs for data storage and backup.</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:border-blue-500 border-2 border-transparent transition duration-300 transform hover:scale-105">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">Peripherals & Accessories</h3>
+                    <p class="text-gray-600">Monitors, keyboards, and other essentials for complete setups.</p>
+                </div>
+                <!-- Card 6 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:border-blue-500 border-2 border-transparent transition duration-300 transform hover:scale-105">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">Hardware Repair</h3>
+                    <p class="text-gray-600">Expert repair services for all IT hardware components.</p>
+                </div>
+                <!-- Card 7 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:border-blue-500 border-2 border-transparent transition duration-300 transform hover:scale-105">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">Consulting Services</h3>
+                    <p class="text-gray-600">Professional advice on hardware selection and optimization.</p>
+                </div>
+                <!-- Card 8 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:border-blue-500 border-2 border-transparent transition duration-300 transform hover:scale-105">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">Bulk Orders</h3>
+                    <p class="text-gray-600">Discounted pricing for large-scale hardware procurements.</p>
+                </div>
+                <!-- Card 9 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:border-blue-500 border-2 border-transparent transition duration-300 transform hover:scale-105">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">Warranty Support</h3>
+                    <p class="text-gray-600">Comprehensive warranty and after-sales support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Partners Section: Multiple cards with logos -->
+    <section id="partners" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-blue-900 text-center mb-12">Our Partners</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md flex items-center justify-center hover:shadow-xl transition duration-300 transform hover:scale-105">
+                    <img src="https://via.placeholder.com/150?text=Intel" alt="Intel" class="h-20">
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md flex items-center justify-center hover:shadow-xl transition duration-300 transform hover:scale-105">
+                    <img src="https://via.placeholder.com/150?text=AMD" alt="AMD" class="h-20">
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md flex items-center justify-center hover:shadow-xl transition duration-300 transform hover:scale-105">
+                    <img src="https://via.placeholder.com/150?text=NVIDIA" alt="NVIDIA" class="h-20">
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md flex items-center justify-center hover:shadow-xl transition duration-300 transform hover:scale-105">
+                    <img src="https://via.placeholder.com/150?text=Cisco" alt="Cisco" class="h-20">
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md flex items-center justify-center hover:shadow-xl transition duration-300 transform hover:scale-105">
+                    <img src="https://via.placeholder.com/150?text=Dell" alt="Dell" class="h-20">
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md flex items-center justify-center hover:shadow-xl transition duration-300 transform hover:scale-105">
+                    <img src="https://via.placeholder.com/150?text=HP" alt="HP" class="h-20">
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md flex items-center justify-center hover:shadow-xl transition duration-300 transform hover:scale-105">
+                    <img src="https://via.placeholder.com/150?text=Microsoft" alt="Microsoft" class="h-20">
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md flex items-center justify-center hover:shadow-xl transition duration-300 transform hover:scale-105">
+                    <img src="https://via.placeholder.com/150?text=Lenovo" alt="Lenovo" class="h-20">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section: Carousel with 6 cards, arrows -->
+    <section id="feedback" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-blue-900 text-center mb-12">Customer Feedback</h2>
+            <div class="relative">
+                <div class="overflow-hidden">
+                    <div id="slider" class="flex transition-transform duration-500 ease-in-out" style="transform: translateX(0%);">
+                        <!-- Card 1 -->
+                        <div class="min-w-full md:min-w-[33.333%] px-4">
+                            <div class="bg-white p-6 rounded-xl shadow-md">
+                                <p class="text-gray-600 mb-4">"Excellent products and fast delivery!"</p>
+                                <p class="font-semibold text-blue-800">- John Doe</p>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="min-w-full md:min-w-[33.333%] px-4">
+                            <div class="bg-white p-6 rounded-xl shadow-md">
+                                <p class="text-gray-600 mb-4">"Top-notch customer service."</p>
+                                <p class="font-semibold text-blue-800">- Jane Smith</p>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="min-w-full md:min-w-[33.333%] px-4">
+                            <div class="bg-white p-6 rounded-xl shadow-md">
+                                <p class="text-gray-600 mb-4">"Reliable hardware for our business."</p>
+                                <p class="font-semibold text-blue-800">- Mike Johnson</p>
+                            </div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="min-w-full md:min-w-[33.333%] px-4">
+                            <div class="bg-white p-6 rounded-xl shadow-md">
+                                <p class="text-gray-600 mb-4">"Great value for money."</p>
+                                <p class="font-semibold text-blue-800">- Emily Davis</p>
+                            </div>
+                        </div>
+                        <!-- Card 5 -->
+                        <div class="min-w-full md:min-w-[33.333%] px-4">
+                            <div class="bg-white p-6 rounded-xl shadow-md">
+                                <p class="text-gray-600 mb-4">"Innovative solutions that work."</p>
+                                <p class="font-semibold text-blue-800">- Chris Brown</p>
+                            </div>
+                        </div>
+                        <!-- Card 6 -->
+                        <div class="min-w-full md:min-w-[33.333%] px-4">
+                            <div class="bg-white p-6 rounded-xl shadow-md">
+                                <p class="text-gray-600 mb-4">"Highly recommended for IT needs."</p>
+                                <p class="font-semibold text-blue-800">- Sarah Wilson</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="slideLeft()" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 transition">&lt;</button>
+                <button onclick="slideRight()" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 transition">&gt;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer: Navy blue -->
+    <footer class="bg-blue-900 text-white py-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <img src="https://via.placeholder.com/150?text=Logo" alt="TechHardware Logo" class="mb-4">
+                <p class="text-sm">© 2025 TechHardware Inc. All rights reserved.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Address</h4>
+                <p>123 Tech Street<br>City, State 12345<br>USA</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Social Media</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-blue-300">Twitter</a></li>
+                    <li><a href="#" class="hover:text-blue-300">LinkedIn</a></li>
+                    <li><a href="#" class="hover:text-blue-300">Facebook</a></li>
+                    <li><a href="#" class="hover:text-blue-300">Instagram</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Business Hours</h4>
+                <p>Monday - Friday: 9 AM - 6 PM<br>Saturday: 10 AM - 4 PM<br>Sunday: Closed</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fixed WhatsApp and Phone Icons -->
+    <div class="fixed bottom-8 right-8 space-y-4 z-50">
+        <a href="tel:+1234567890" class="block bg-blue-500 p-3 rounded-full shadow-lg hover:bg-blue-600 transition">
+            <img src="https://via.placeholder.com/32?text=Phone" alt="Call Us" class="w-8 h-8">
+        </a>
+        <a href="https://wa.me/1234567890" class="block bg-green-500 p-3 rounded-full shadow-lg hover:bg-green-600 transition">
+            <img src="https://via.placeholder.com/32?text=WA" alt="WhatsApp" class="w-8 h-8">
+        </a>
+    </div>
+
+    <!-- JavaScript for Carousel -->
+    <script>
+        let currentSlide = 0;
+        const slider = document.getElementById('slider');
+        const slides = slider.children.length;
+        const slideWidth = 100 / 3; // For 3 slides visible on md+
+
+        function slideLeft() {
+            currentSlide = (currentSlide - 1 + slides) % slides;
+            slider.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+        }
+
+        function slideRight() {
+            currentSlide = (currentSlide + 1) % slides;
+            slider.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+        }
+
+        // Adjust for mobile (1 slide at a time)
+        if (window.innerWidth < 768) {
+            slideWidth = 100;
+        }
+    </script>
+
+</body>
+</html>

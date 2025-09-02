@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechVault - IT Hardware Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-in-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+        }
+        .feedback-container {
+            overflow: hidden;
+        }
+        .feedback-track {
+            transition: transform 0.5s ease-in-out;
+        }
+        .partner-logo {
+            animation: float 6s ease-in-out infinite;
+        }
+        .partner-logo:nth-child(even) {
+            animation-delay: -3s;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .floating-buttons {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1000;
+        }
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            background: rgba(219, 234, 254, 0.9);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Floating Contact Buttons -->
+    <div class="floating-buttons flex flex-col space-y-3">
+        <a href="https://wa.me/1234567890" class="bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition-colors">
+            <i class="fab fa-whatsapp text-xl"></i>
+        </a>
+        <a href="tel:+1234567890" class="bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors">
+            <i class="fas fa-phone text-xl"></i>
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-blur fixed w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-microchip text-blue-600 text-2xl"></i>
+                    <span class="text-2xl font-bold text-gray-800">TechVault</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors">About</a>
+                    <a href="#services" class="text-gray-700 hover:text-blue-600 transition-colors">Services</a>
+                    <a href="#partners" class="text-gray-700 hover:text-blue-600 transition-colors">Partners</a>
+                    <a href="#feedback" class="text-gray-700 hover:text-blue-600 transition-colors">Testimonials</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
+                </div>
+                <button class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+   <section id="home" class="parallax min-h-screen flex items-center" 
+    style="background-image: linear-gradient(rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.1)), 
+    url('data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 1000 1000\'><rect fill=\'%23f8fafc\' width=\'1000\' height=\'1000\'/><g fill=\'%23e2e8f0\' opacity=\'0.5\'><circle cx=\'200\' cy=\'200\' r=\'100\'/><circle cx=\'800\' cy=\'300\' r=\'80\'/><circle cx=\'400\' cy=\'600\' r=\'120\'/><circle cx=\'700\' cy=\'700\' r=\'90\'/><rect x=\'100\' y=\'400\' width=\'200\' height=\'100\' rx=\'10\'/><rect x=\'600\' y=\'100\' width=\'150\' height=\'80\' rx=\'8\'/></g></svg>');">
+
+        <div class="container mx-auto px-6 text-center">
+            <div class="fade-in">
+                <h1 class="text-5xl md:text-7xl font-bold text-gray-800 mb-6">
+                    Next-Gen <span class="text-blue-600">IT Hardware</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                    Empowering businesses with cutting-edge technology solutions and premium hardware components
+                </p>
+                <div class="space-x-4">
+                    <button class="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg hover:bg-blue-700 transition-colors shadow-lg">
+                        Explore Products
+                    </button>
+                    <button class="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg text-lg hover:bg-blue-600 hover:text-white transition-all">
+                        Get Quote
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23ddd6fe' width='400' height='300' rx='20'/><rect fill='%239333ea' x='50' y='50' width='300' height='200' rx='10'/><rect fill='%23fff' x='70' y='70' width='80' height='50' rx='5'/><rect fill='%23fff' x='170' y='70' width='80' height='50' rx='5'/><rect fill='%23fff' x='270' y='70' width='60' height='50' rx='5'/><rect fill='%23fff' x='70' y='140' width='260' height='20' rx='10'/><rect fill='%23fff' x='70' y='180' width='200' height='20' rx='10'/><circle fill='%236366f1' cx='320' cy='200' r='15'/></svg>" alt="About Us" class="w-full rounded-lg shadow-lg">
+                </div>
+                <div class="fade-in">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">About TechVault</h2>
+                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                        With over a decade of experience in the IT hardware industry, TechVault has established itself as a trusted partner for businesses seeking reliable, high-performance technology solutions. We specialize in providing enterprise-grade hardware, from servers and networking equipment to storage solutions and custom-built systems.
+                    </p>
+                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                        Our team of certified professionals works closely with clients to understand their unique requirements and deliver tailored solutions that drive business growth and operational efficiency.
+                    </p>
+                    <div class="flex space-x-8">
+                        <div>
+                            <h3 class="text-3xl font-bold text-blue-600">500+</h3>
+                            <p class="text-gray-600">Happy Clients</p>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold text-blue-600">10+</h3>
+                            <p class="text-gray-600">Years Experience</p>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold text-blue-600">24/7</h3>
+                            <p class="text-gray-600">Support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Services</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Comprehensive IT hardware solutions tailored to meet your business needs</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg border hover:border-blue-500 transition-all duration-300 fade-in">
+                    <i class="fas fa-server text-4xl text-blue-600 mb-6"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Server Solutions</h3>
+                    <p class="text-gray-600">Enterprise-grade servers for maximum performance and reliability</p>
+                </div>
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg border hover:border-blue-500 transition-all duration-300 fade-in">
+                    <i class="fas fa-network-wired text-4xl text-blue-600 mb-6"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Networking Equipment</h3>
+                    <p class="text-gray-600">Advanced networking solutions for seamless connectivity</p>
+                </div>
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg border hover:border-blue-500 transition-all duration-300 fade-in">
+                    <i class="fas fa-database text-4xl text-blue-600 mb-6"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Storage Solutions</h3>
+                    <p class="text-gray-600">Scalable storage systems for your growing data needs</p>
+                </div>
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg border hover:border-blue-500 transition-all duration-300 fade-in">
+                    <i class="fas fa-desktop text-4xl text-blue-600 mb-6"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Workstations</h3>
+                    <p class="text-gray-600">High-performance workstations for demanding applications</p>
+                </div>
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg border hover:border-blue-500 transition-all duration-300 fade-in">
+                    <i class="fas fa-shield-alt text-4xl text-blue-600 mb-6"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Security Hardware</h3>
+                    <p class="text-gray-600">Advanced security solutions to protect your infrastructure</p>
+                </div>
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg border hover:border-blue-500 transition-all duration-300 fade-in">
+                    <i class="fas fa-tools text-4xl text-blue-600 mb-6"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Technical Support</h3>
+                    <p class="text-gray-600">24/7 technical support and maintenance services</p>
+                </div>
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg border hover:border-blue-500 transition-all duration-300 fade-in">
+                    <i class="fas fa-cloud text-4xl text-blue-600 mb-6"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Cloud Infrastructure</h3>
+                    <p class="text-gray-600">Hybrid cloud solutions for modern business needs</p>
+                </div>
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg border hover:border-blue-500 transition-all duration-300 fade-in">
+                    <i class="fas fa-cogs text-4xl text-blue-600 mb-6"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Custom Solutions</h3>
+                    <p class="text-gray-600">Tailored hardware solutions designed for your specific requirements</p>
+                </div>
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg border hover:border-blue-500 transition-all duration-300 fade-in">
+                    <i class="fas fa-laptop text-4xl text-blue-600 mb-6"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Mobile Solutions</h3>
+                    <p class="text-gray-600">Enterprise mobility solutions and mobile device management</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partners" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Partners</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Trusted partnerships with industry leaders</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                <div class="partner-logo bg-white p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <i class="fab fa-microsoft text-4xl text-blue-600 mb-2"></i>
+                        <p class="text-sm text-gray-600">Microsoft</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <i class="fab fa-apple text-4xl text-gray-800 mb-2"></i>
+                        <p class="text-sm text-gray-600">Apple</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <i class="fab fa-google text-4xl text-red-500 mb-2"></i>
+                        <p class="text-sm text-gray-600">Google</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <i class="fab fa-amazon text-4xl text-orange-500 mb-2"></i>
+                        <p class="text-sm text-gray-600">Amazon</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <i class="fas fa-microchip text-4xl text-blue-700 mb-2"></i>
+                        <p class="text-sm text-gray-600">Intel</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <i class="fas fa-memory text-4xl text-green-600 mb-2"></i>
+                        <p class="text-sm text-gray-600">NVIDIA</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <i class="fas fa-hdd text-4xl text-blue-800 mb-2"></i>
+                        <p class="text-sm text-gray-600">Dell</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <i class="fas fa-server text-4xl text-red-600 mb-2"></i>
+                        <p class="text-sm text-gray-600">HP</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <i class="fas fa-network-wired text-4xl text-blue-500 mb-2"></i>
+                        <p class="text-sm text-gray-600">Cisco</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <i class="fas fa-shield-alt text-4xl text-purple-600 mb-2"></i>
+                        <p class="text-sm text-gray-600">IBM</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <i class="fas fa-database text-4xl text-orange-600 mb-2"></i>
+                        <p class="text-sm text-gray-600">Oracle</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <i class="fas fa-cloud text-4xl text-indigo-600 mb-2"></i>
+                        <p class="text-sm text-gray-600">VMware</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="feedback" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">What Our Clients Say</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Hear from our satisfied customers</p>
+            </div>
+            <div class="relative">
+                <div class="feedback-container">
+                    <div id="feedback-track" class="feedback-track flex space-x-6">
+                        <div class="min-w-full md:min-w-[33.333%] bg-gray-50 p-8 rounded-lg shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%233b82f6' cx='50' cy='50' r='50'/><text x='50' y='60' text-anchor='middle' fill='white' font-size='40' font-family='Arial'>JS</text></svg>" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-bold text-gray-800">John Smith</h4>
+                                    <p class="text-gray-600">CTO, TechCorp</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 italic">"TechVault provided exceptional server solutions that transformed our infrastructure. Their technical expertise and support are unmatched."</p>
+                            <div class="flex text-yellow-400 mt-4">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="min-w-full md:min-w-[33.333%] bg-gray-50 p-8 rounded-lg shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%23ef4444' cx='50' cy='50' r='50'/><text x='50' y='60' text-anchor='middle' fill='white' font-size='40' font-family='Arial'>SD</text></svg>" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Sarah Davis</h4>
+                                    <p class="text-gray-600">IT Manager, GlobalTech</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 italic">"Outstanding networking solutions and 24/7 support. TechVault truly understands enterprise needs and delivers consistently."</p>
+                            <div class="flex text-yellow-400 mt-4">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="min-w-full md:min-w-[33.333%] bg-gray-50 p-8 rounded-lg shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%2310b981' cx='50' cy='50' r='50'/><text x='50' y='60' text-anchor='middle' fill='white' font-size='40' font-family='Arial'>MJ</text></svg>" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Mike Johnson</h4>
+                                    <p class="text-gray-600">CEO, InnovateCorp</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 italic">"The custom storage solution TechVault designed for us exceeded our expectations. Professional, reliable, and innovative."</p>
+                            <div class="flex text-yellow-400 mt-4">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="min-w-full md:min-w-[33.333%] bg-gray-50 p-8 rounded-lg shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%23a855f7' cx='50' cy='50' r='50'/><text x='50' y='60' text-anchor='middle' fill='white' font-size='40' font-family='Arial'>LW</text></svg>" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Lisa Wang</h4>
+                                    <p class="text-gray-600">Director, DataSystems</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 italic">"Excellent workstation solutions that boosted our team's productivity. TechVault's expertise in high-performance computing is remarkable."</p>
+                            <div class="flex text-yellow-400 mt-4">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="min-w-full md:min-w-[33.333%] bg-gray-50 p-8 rounded-lg shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%23f59e0b' cx='50' cy='50' r='50'/><text x='50' y='60' text-anchor='middle' fill='white' font-size='40' font-family='Arial'>RB</text></svg>" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Robert Brown</h4>
+                                    <p class="text-gray-600">VP Technology, SecureTech</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 italic">"Their security hardware solutions have significantly enhanced our infrastructure protection. Highly recommended for enterprise security."</p>
+                            <div class="flex text-yellow-400 mt-4">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="min-w-full md:min-w-[33.333%] bg-gray-50 p-8 rounded-lg shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%2306b6d4' cx='50' cy='50' r='50'/><text x='50' y='60' text-anchor='middle' fill='white' font-size='40' font-family='Arial'>AG</text></svg>" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Amanda Garcia</h4>
+                                    <p class="text-gray-600">CIO, CloudFirst</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 italic">"TechVault's cloud infrastructure solutions helped us seamlessly migrate to hybrid cloud. Exceptional service and technical support."</p>
+                            <div class="flex text-yellow-400 mt-4">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="prev-feedback" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="next-feedback" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-slate-800 text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <i class="fas fa-microchip text-blue-400 text-2xl"></i>
+                        <span class="text-2xl font-bold">TechVault</span>
+                    </div>
+                    <p class="text-gray-300 mb-6">Leading IT hardware solutions provider, delivering cutting-edge technology to businesses worldwide.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-300 hover:text-blue-400 transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-blue-400 transition-colors">About Us</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-blue-400 transition-colors">Services</a></li>
+                        <li><a href="#partners" class="text-gray-300 hover:text-blue-400 transition-colors">Partners</a></li>
+                        <li><a href="#feedback" class="text-gray-300 hover:text-blue-400 transition-colors">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Services</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors">Server Solutions</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors">Networking Equipment</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors">Storage Solutions</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors">Technical Support</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors">Custom Solutions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Contact Info</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-map-marker-alt text-blue-400"></i>
+                            <span class="text-gray-300">123 Tech Street, Silicon Valley, CA 94043</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-blue-400"></i>
+                            <span class="text-gray-300">+1 (555) 123-4567</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-blue-400"></i>
+                            <span class="text-gray-300">info@techvault.com</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-clock text-blue-400"></i>
+                            <div class="text-gray-300">
+                                <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                                <p>Sat: 10:00 AM - 4:00 PM</p>
+                                <p>Sun: Closed</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-headset text-blue-400"></i>
+                            <span class="text-gray-300">24/7 Emergency Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-300">&copy; 2025 TechVault. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Testimonial slider functionality
+        let currentSlide = 0;
+        const totalSlides = 6;
+        const slideWidth = window.innerWidth < 768 ? 100 : 33.333;
+        const track = document.getElementById('feedback-track');
+        const prevBtn = document.getElementById('prev-feedback');
+        const nextBtn = document.getElementById('next-feedback');
+
+        function updateSlider() {
+            const maxSlide = window.innerWidth < 768 ? totalSlides - 1 : totalSlides - 3;
+            if (currentSlide > maxSlide) currentSlide = maxSlide;
+            if (currentSlide < 0) currentSlide = 0;
+            
+            track.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            const maxSlide = window.innerWidth < 768 ? totalSlides - 1 : totalSlides - 3;
+            if (currentSlide < maxSlide) {
+                currentSlide++;
+                updateSlider();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlider();
+            }
+        });
+
+        // Auto-slide testimonials
+        setInterval(() => {
+            const maxSlide = window.innerWidth < 768 ? totalSlides - 1 : totalSlides - 3;
+            currentSlide = (currentSlide + 1) % (maxSlide + 1);
+            updateSlider();
+        }, 5000);
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(219, 234, 254, 0.95)';
+                nav.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.background = 'rgba(219, 234, 254, 0.9)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('#home');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Responsive slider adjustment
+        window.addEventListener('resize', () => {
+            currentSlide = 0;
+            updateSlider();
+        });
+
+        // Initialize
+        updateSlider();
+    </script>
+</body>
+</html>

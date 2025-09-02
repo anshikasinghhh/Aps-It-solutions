@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space IT Solution</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General styling and smooth scroll */
+        :root {
+            --primary-color: #0d1a26;
+            --secondary-color: #172a3a;
+            --accent-color: #00f0ff;
+            --text-color: #e0e0e0;
+            --glow-color: #00e5ff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            background-image: url();
+        }
+
+        /* --- Global elements --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+        }
+
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        /* --- Header and Navigation --- */
+        .header {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 95%;
+            max-width: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            z-index: 1000;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+             box-shadow: 0 0 15px rgba(255, 255, 255, 0.4),
+                0 0 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+             color: #000;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            margin-right: 10px;
+            color: #0077ff;
+            text-shadow: 0 0 10px rgba(0, 119, 255, 0.6), 
+                 0 0 20px rgba(0, 119, 255, 0.4);
+            
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-links a {
+            color: #000;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-left: 30px;
+            padding: 10px 15px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+             color: #0077ff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: #0077ff;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 80%;
+        }
+
+        .get-in-touch {
+            font-size: 1.5rem;
+            color: var(--glow-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .get-in-touch:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color);
+        }
+
+        /* --- Landing Page / Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOyj0X6r1LTNkwS_Y-JH5gJNPwJ7eUPBVW3A&s');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-content {
+            z-index: 1;
+            padding: 40px;
+            border-radius: 20px;
+            background: rgba(13, 26, 38, 0.7);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+            transform: translateY(0);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin: 0;
+            color: var(--text-color);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            color: var(--accent-color);
+        }
+
+        /* --- About Us Section --- */
+       /* Container layout */
+#about-us .container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+/* Image styling */
+#about-us img {
+    max-width: 50%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Hover effect for image */
+#about-us img:hover {
+    transform: scale(0.95); /* Zoom out slightly */
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.7), 
+                0 0 60px rgba(0, 255, 255, 0.5), 
+                0 0 100px rgba(0, 255, 255, 0.3); /* Lightning/glow effect */
+}
+
+/* Content styling */
+
+#about-us .content p {
+    position: relative; 
+    top: -150px;
+    left:30px;
+    transition: top 0.3s ease;
+}
+
+/* Shift About Us upward */
+#about-us .content h2 {
+    position: relative;
+    top:-150px;
+    /* top: -10px; Shift up */
+    
+     transition: top 0.3s ease;
+}
+
+
+        /* --- Our Gallery Section --- */
+        #gallery {
+            background-color: var(--secondary-color);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background: var(--primary-color);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 240, 255, 0.4);
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-card h3 {
+            font-size: 1.2rem;
+            margin: 15px 0 10px;
+        }
+        .product-card p {
+            font-size: 1rem;
+            color: var(--text-color);
+            padding: 0 15px 20px;
+        }
+
+        /* --- Feedback Section --- */
+        /* Feedback Section */
+#feedback {
+   background-color: var(--secondary-color);
+    padding: 60px 20px;
+    color: #fff;
+    text-align: center;
+}
+
+#feedback h2 {
+    color: #00f0ff;
+    font-size: 2rem;
+    
+    margin-top:-30px;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+}
+
+/* Slider */
+.feedback-slider {
+    position: relative;
+    max-width: 1500px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.feedback-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 60px;
+}
+
+/* Feedback Card */
+.feedback-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 25px;
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 250px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    position: relative;
+}
+.feedback-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+}
+.client-photo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #00f0ff;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+.client-photo:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.9);
+}
+
+
+.feedback-card p {
+    font-style: italic;
+    margin-bottom: 10px;
+    color: #ddd;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    overflow: auto;
+    padding-top: 60px;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    border-radius: 10px;
+    animation: zoomIn 0.4s ease;
+}
+
+@keyframes zoomIn {
+    from {transform: scale(0.5);}
+    to {transform: scale(1);}
+}
+
+/* Close Button */
+.modal .close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.feedback-card span {
+    font-size: 0.9rem;
+    color: #00f0ff;
+}
+
+/* Chat bubble style */
+.feedback-card::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.05) transparent transparent transparent;
+}
+
+/* Arrows */
+.feedback-arrow {
+    background: rgba(0, 240, 255, 0.2);
+    border: none;
+    color: #00f0ff;
+    font-size: 2rem;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background 0.3s ease;
+    z-index: 10;
+}
+
+.feedback-arrow:hover {
+    background: rgba(0, 240, 255, 0.4);
+}
+
+.feedback-arrow.left {
+    left: 10px;
+}
+
+.feedback-arrow.right {
+    right: 10px;
+}
+
+        /* our partners  */
+        /* Partners Section */
+#our-partners {
+    background-color: #0d1a26; /* Dark background */
+    padding: 60px 20px;
+    text-align: center;
+}
+
+#our-partners h2 {
+    color: #00f0ff; /* Accent color */
+    font-size: 3rem;
+    margin-top:-40px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+}
+
+#our-partners p {
+    color: #ccc;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    font-size: 1rem;
+    margin-bottom:10px;
+}
+
+/* Partner Logos */
+.partners-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 90px;
+
+}
+
+.partner-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.partner-card img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display:block;
+    margin:0 auto;
+    margin-bottom:45px;
+}
+
+.partner-card:hover img {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
+}
+/* Hover effect */
+.partner-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.6),
+                0 0 40px rgba(0, 240, 255, 0.4);
+}
+.partner-card p {
+    display:block;
+    margin-top: 52px;   /* pushes Lenovo text down */
+    text-align: center; /* keeps text centered */
+    font-size: 50px;    /* optional styling */
+    color: #fff;   
+    margin:0;  
+    font-weight:bold;   /* adjust color if needed */
+}
+.partner-card a {
+    display: flex;
+    flex-direction: column; /* stack img and p vertically */
+    align-items: center;    /* keep centered */
+}
+
+.partner-link {
+    margin-top: 8px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.partner-link:hover {
+    text-decoration: underline;
+}
+
+        /* Partners Section */
+
+
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            padding: 50px 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 240, 255, 0.1);
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            text-align: left;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        .footer-section h3 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        .social-media a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: color 0.3s ease;
+        }
+        .social-media a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- Get In Touch Modal --- */
+        .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    width: 90%;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.modal-content iframe {
+    border: none;
+    border-radius: 8px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 15px;
+                top: 10px;
+                border-radius: 20px;
+            }
+            .nav-links {
+                margin-top: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-links a {
+                margin: 5px 10px;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            #about-us .container {
+                flex-direction: column;
+            }
+            #about-us img {
+                max-width: 100%;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="header">
+        <a href="#home" class="logo">
+            <i class="fas fa-rocket"></i>
+            <span>APS Telecom & IT Solutions</span>
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about-us">About Us</a></li>
+                <li><a href="#gallery">Our Services</a></li>
+                <li><a href="#feedback">Feedback</a></li>
+                <li><a href="#Our partners">Our Partners</a></li>
+            </ul>
+        </nav>
+        <div class="get-in-touch" id="getInTouchBtn">
+            <i class="fas fa-handshake"></i>
+        </div>
+    </header>
+
+    <!-- Home Section (Parallax) -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Powering Tomorrow with Strong Hardware & Seamless Software</h1>
+            <p>One stop soutions for all your IT needs </p>
+        </div>
+    </section>
+    
+
+    <!-- About Us Section -->
+    <section id="about-us">
+        <div class="container">
+            <img src="Screenshot 2025-08-15 193036.png" alt="Our team working">
+            <div class="content">
+                <h2>About Us</h2>
+                <p>
+                    APS IT Solution is a leading provider of high-quality IT hardware and services. We are dedicated to delivering cutting-edge technology and unparalleled support to businesses of all sizes. Our mission is to empower your company with the best tools to succeed in a digital-first world.
+                </p>
+                <p>
+                    With years of experience and a passion for technology, our team is committed to finding the perfect solution for your specific needs, whether it's building a new server, upgrading your network infrastructure, or providing essential peripherals.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="gallery-grid">
+                <!-- Product Card 1 -->
+                 <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1491472253230-a044054ca35f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bGFwdG9wJTIwY29tcHV0ZXJ8ZW58MHx8MHx8fDA%3D" alt="High-Performance Server">
+                    <h3>Commercial Laptop</h3>
+                    <p> Corporate Boardrooms are no longer 
+                        just an image building tool for large 
+                        multinational organizations.</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6eEXy0QT-nnFplcCmYqDRRs1tinGjhnvwRA&s" alt="High-Performance Server">
+                    <h3>IT Assets on Rent</h3>
+                    <p> Flexible and cost-effective IT 
+                        assets on rent, including laptops, desktops, 
+                        servers, and networking equipment. Ideal for startups, 
+                        businesses, 
+                        and events to scale 
+                        without heavy investment.</p>
+                </div>
+                <!-- <div class="product-card">
+                    <img src="ChatGPT Image Aug 16, 2025, 11_45_29 PM.png" alt="High-Performance Server">
+                    <h3>Telecom Solutions</h3>
+                    <p> Corporate Boardrooms are no longer 
+                        just an image building tool for large 
+                        multinational organizations.</p>
+                </div> -->
+                
+                <div class="product-card">
+                    <img src="https://www.rifeindia.com/cdn/shop/files/download_26_grande.jpg?v=1738473742" alt="High-Performance Server">
+                    <h3>AV Integration & Board Room Solutions</h3>
+                    <p> Corporate Boardrooms are no longer 
+                        just an image building tool for large 
+                        multinational organizations.</p>
+                </div>
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <img src="https://icebreakers.tech/wp-content/uploads/2023/12/Networking-Solutions.jpg" alt="Gaming Laptop">
+                    <h3>Network Solutions & Design</h3>
+                    <p>We provide deployment of complex 
+                    networking solutions as well as simple 
+                    networking for small and medium 
+                    businesses. </p>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="product-card">
+                    <img src="https://5.imimg.com/data5/AG/LA/GLADMIN-522662/hardware-solutions.jpg" alt="Network Router">
+                    <h3>Hardware Solutions</h3>
+                    <p>We offer a wide range of Desktops, 
+                    Laptops, Switches, Routers, Server, 
+                    Storage, to get you a single stop for all of 
+                    your IT needs.</p>
+                </div>
+                <!-- Product Card 4 -->
+                <div class="product-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn8GkTl3nmw6rPyKHv-bDCSB92B2eud_8xJA&s" alt="4K Monitor">
+                    <h3> Internet Security & Firewall</h3>
+                    <p> We help to ensure risk free 
+                    environment to organizations 
+                    both on premise and over 
+                    public/private cloud 
+                    environments.</p>
+                </div>
+                <!-- Product Card 5
+                <div class="product-card">
+                    <img src="https://media.istockphoto.com/id/1311084165/photo/a-security-workplace-with-a-modern-high-tech-control-panel-in-the-form-of-large-monitors-that.jpg?s=612x612&w=0&k=20&c=67_T5DVqFH8ZxJ8iUgr4Cc4NGhI65ZS3EYPtER85mKI=" alt="Mechanical Keyboard">
+                    <h3>Security & Surveillance</h3>
+                    <p>With ever growing expansion 
+                    of business world, the need of 
+                    physical security is an essential 
+                    investment that no enterprise 
+                    can disregard</p>
+                </div> -->
+                <!-- Product Card 6 -->
+                <!-- <div class="product-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5zixfF6a9dsERhFd2u82KU9PdMhMLMRvUSg&s" alt="External SSD">
+                    <h3> Routing & Switching</h3>
+                    <p>We help everyone in your 
+                    organization to connect with 
+                    each other and important 
+                    applications, irrelevant of their 
+                    physical location over internet 
+                    in a secure manner.</p>
+                </div> -->
+                
+                
+            </div>
+        </div>
+    </section>
+    <!-- our partners -->
+     
+    <section id="our-partners">
+    <div class="partners-container">
+        <h2>Our Partners</h2>
+        <p>We collaborate with leading companies worldwide to deliver the best solutions.</p>
+
+        <div class="partners-logos">
+            <div class="partner-card">
+               <a href="https://www.lenovo.com/in/en/?srsltid=AfmBOoocSlle4ADBNwMKkbXQeEVNeahItaHJC3c0IPDzogQ1FsibCFMR" target="_blank">
+                <img src="https://i.pinimg.com/1200x/12/d0/64/12d0645dd42da1c4796c4a87d2f3f706.jpg" alt="HP Logo">
+                <p>Lenovo</p>
+         </a>
+                
+            </div>
+            <div class="partner-card">
+                <a href="https://www.dellstore.com/deals/monitor-deals.html?gacd=10415953-9016-5761040-285981356-0&dgc=ST&gclsrc=aw.ds&gad_source=1&gad_campaignid=18988323240&gbraid=0AAAAAD1NDEU4YOIQPl6bjy_q8E3YDstFU&gclid=Cj0KCQjw2IDFBhDCARIsABDKOJ6nIH8NizJYj-gKsYSue59pViSc9cKu9Zb_z_8pmV8HRaPvKhABREkaAnYSEALw_wcB" target="_blank">
+                <img src="Screenshot 2025-08-16 125354.png" alt="HP Logo">
+                <p>Dell</p>
+         </a>
+            </div>
+            <div class="partner-card">
+                <a href="https://www.hp.com/in-en/shop/?intel_sem&jumpid=ps_in_go_st_hc_cm018701_cv_aq_bcr&gclsrc=aw.ds&gad_source=1&gad_campaignid=10464128542&gbraid=0AAAAACY0IB0N8W7wh-0RA6fnfv_1HOY1D&gclid=Cj0KCQjw2IDFBhDCARIsABDKOJ4_UPyp625XB_3-PTULPzLv9SedZU8gpE1lezYULVM4Bo4nHaXOu14aAkJUEALw_wcB" target="_blank">
+                <img src="https://logos-world.net/wp-content/uploads/2020/12/Hewlett-Packard-Logo.jpg" alt="HP Logo">
+                <p>HP</p>
+         </a>
+            </div>
+            <div class="partner-card">
+                 <a href="https://www.acer.com/in-en" target="_blank">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDrcX8xoye-3eIbPWyZ3BMK22zoz0zCLFr1w&s" alt="HP Logo">
+                <p>Acer</p>
+         </a>
+            </div>
+            <div class="partner-card">
+                 <a href="https://www.samsung.com/in/?srsltid=AfmBOoo_JWu1BV7YqEV4bTI9L3hxZhKACTM1vDxkmvvn_ZVxs55q-OB3" target="_blank">
+                <img src="https://thumbs.dreamstime.com/b/samsung-logo-white-background-samsung-logo-white-background-editorial-illustration-company-samsung-168841211.jpg" alt="HP Logo">
+                <p>Samsung</p>
+         </a>
+            </div>
+            <div class="partner-card">
+                 <a href="https://www.cisco.com/site/in/en/index.html?ccid=cc003689&dtid=psexsp001647&utm_medium=cpc&utm_source=google&campaign=corporate-brand&gclsrc=aw.ds&gad_source=1&gad_campaignid=19603919241&gbraid=0AAAAApRMQfMTaCe1orKYlftj-l7K9OFmL&gclid=Cj0KCQjw2IDFBhDCARIsABDKOJ5LpXEyj5ZCDGzudp5yfMsFosgXettQ22MfQfZ5fGT6qcmQEarHxgAaAr0bEALw_wcB" target="_blank">
+                <img src="https://newsroom.cisco.com/content/dam/r/newsroom/en/us/assets/a/y2024/m08/Cisco_Logo_no_TM_Sky_Blue-RGB_1200x675.jpg" alt="HP Logo">
+                <p>Cisco</p>
+         </a>
+            </div>
+            <div class="partner-card">
+                <a href="https://www.logitech.com/en-us" target="_blank">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsrb1N22NDuc26h_xtMX4fyVG5O2HQuy11HA&s" alt="HP Logo">
+                <p>Logitech</p>
+         </a>
+            </div>
+            <div class="partner-card">
+                 <a href="https://www.sony.co.in/homepage" target="_blank">
+                <img src="https://1000logos.net/wp-content/uploads/2017/06/Sony-Logo.jpg" alt="HP Logo">
+                <p>Sony</p>
+         </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Feedback Section -->
+    <section id="feedback">
+    <div class="feedback-container">
+        <h2>What Our Clients Say</h2>
+
+        <div class="feedback-slider">
+            <button class="feedback-arrow left" id="feedbackPrev">&#10094;</button>
+
+            <div class="feedback-track">
+                <div class="feedback-card">
+                    <img src="https://iepfclaim.in/wp-content/uploads/2022/01/29-297391_woman-at-clker-vector-free-download-png-clipart.png" alt="Client 1" class="client-photo">
+                    <p>"Space IT Solution transformed our IT infrastructure completely. Highly recommended!"</p>
+                    <span>- Alex Johnson, TechCorp</span>
+                </div>
+                <div class="feedback-card">
+                    <img src="https://img.freepik.com/premium-vector/cartoon-character-features-young-man-smiling-wearing-blue-shirt-against-solid-background-select-customizable-cartoon-illustration_538213-159086.jpg" alt="Client 2" class="client-photo">
+                    <p>"Exceptional service and support, they are our go-to IT partners now."</p>
+                    <span>- Sarah Lee, InnovateX</span>
+                </div>
+                <div class="feedback-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7H-c2KSbg5sgiFUMLnqow1QPoPkcTHqv8Qw&s" alt="Client 3" class="client-photo">
+                    <p>"Professional, prompt, and reliable — exactly what we needed."</p>
+                    <span>- Michael Smith, DataSoft</span>
+                </div>
+                <div class="feedback-card">
+                    <img src="https://iepfclaim.in/wp-content/uploads/2022/01/29-297391_woman-at-clker-vector-free-download-png-clipart.png" alt="Client 4" class="client-photo">
+                    <p>"They understood our needs perfectly and delivered beyond expectations."</p>
+                    <span>- Priya Sharma, CloudNet</span>
+                </div>
+                <div class="feedback-card">
+                    <img src="https://img.freepik.com/premium-vector/school-boy-vector-illustration_38694-902.jpg" alt="Client 5" class="client-photo">
+                    <p>"Outstanding expertise and seamless execution."</p>
+                    <span>- Daniel Wong, BrightTech</span>
+                </div>
+                <div class="feedback-card">
+                    <img src="client6.jpg" alt="Client 6" class="client-photo">
+                    <p>"Amazing team, quick response, and innovative solutions."</p>
+                    <span>- Emily Davis, NextGen IT</span>
+                </div>
+            </div>
+
+            <button class="feedback-arrow right" id="feedbackNext">&#10095;</button>
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- Footer -->
+     <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-map-marker-alt"></i>A-41 A, Noida Sector 16 Uttar Pradesh 201301</p>
+                    <p><i class="fas fa-phone"></i> +91 7982564612</p>
+                    <p><i class="fas fa-envelope"></i> sales@apsitsolutions.in</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 6:00 PM</p>
+                </div>
+                
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <p>Hardware Solutions</p>
+                    <p>Software Solutions </p>
+                    <p>Internet Solutions </p>
+                    <p>Wifi Solutions</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <p>Stay connected with us on social media for the latest updates and tech news.</p>
+                    <div class="social-links">
+                        <!-- <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a> -->
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                         <a href="https://wa.me/798254612?text=Hello%20I%20am%20interested%20in%20your%20services" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 APS IT Solutions. All rights reserved. | Designed with innovation and excellence.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Get In Touch Modal -->
+    <!-- Trigger button -->
+<a href="javascript:void(0);" id="openModalBtn" class="get-in-touch-btn">
+    Get in Touch
+</a>
+
+<!-- Modal Overlay -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+        <span class="modal-close" id="modalCloseBtn">&times;</span>
+        
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScM6cdqxw1sXZmhKPMS0YCj2uwOY6cfH8TO0Wk1Nb2DvsA_qw/viewform?embedded=true" width="640" 
+        height="818" frameborder="0" marginheight="0"
+         marginwidth="0">Loading…</iframe>
+    </div>
+</div>
+<!-- Image Zoom Modal -->
+<div id="imgModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImg">
+</div>
+
+
+
+    <script>
+        // JavaScript for modal functionality
+       
+        const track = document.querySelector('.feedback-track');
+const prevBtn = document.getElementById('feedbackPrev');
+const nextBtn = document.getElementById('feedbackNext');
+
+let position = 0;
+const cardWidth = 320; // Card width + gap
+
+nextBtn.addEventListener('click', () => {
+    if (position > -(cardWidth * (track.children.length - 3))) {
+        position -= cardWidth;
+        track.style.transform = `translateX(${position}px)`;
+    }
+});
+
+prevBtn.addEventListener('click', () => {
+    if (position < 0) {
+        position += cardWidth;
+        track.style.transform = `translateX(${position}px)`;
+    }
+});
+let slideIndex = 0;
+
+function moveSlide(direction) {
+  const wrapper = document.querySelector(".feedback-wrapper");
+  const totalCards = document.querySelectorAll(".feedback-card").length;
+  const cardsPerView = 3;
+  const maxIndex = totalCards - cardsPerView;
+
+  slideIndex += direction;
+
+  if (slideIndex < 0) slideIndex = 0;
+  if (slideIndex > maxIndex) slideIndex = maxIndex;
+
+  wrapper.style.transform = `translateX(-${slideIndex * (100 / cardsPerView)}%)`;
+}
+document.addEventListener('DOMContentLoaded', () => {
+      /* === Modal Functionality === */
+      const getInTouchBtn = document.getElementById('getInTouchBtn');
+      const modalOverlay = document.getElementById('modalOverlay');
+      const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+      // Open modal
+      getInTouchBtn.addEventListener('click', () => {
+          modalOverlay.style.display = "flex";
+      });
+
+      // Close modal
+      modalCloseBtn.addEventListener('click', () => {
+          modalOverlay.style.display = "none";
+      });
+
+      // Close when clicking outside content
+      modalOverlay.addEventListener('click', (e) => {
+          if (e.target === modalOverlay) {
+              modalOverlay.style.display = "none";
+          }
+      });
+    });
+// Modal elements
+const imgModal = document.getElementById("imgModal");
+const modalImg = document.getElementById("modalImg");
+const closeBtn = document.querySelector(".modal .close");
+
+// Open modal on client-photo click
+document.querySelectorAll(".client-photo").forEach(img => {
+  img.addEventListener("click", function() {
+    imgModal.style.display = "block";
+    modalImg.src = this.src;
+  });
+});
+
+// Close modal on X
+closeBtn.addEventListener("click", () => {
+  imgModal.style.display = "none";
+});
+
+// Close when clicking outside image
+imgModal.addEventListener("click", (e) => {
+  if (e.target === imgModal) {
+    imgModal.style.display = "none";
+  }
+});
+
+    </script>
+</body>
+</html>
