@@ -1,1044 +1,637 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space IT Solution</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>TechVault - IT Hardware Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* General styling and smooth scroll */
-        :root {
-            --primary-color: #0d1a26;
-            --secondary-color: #172a3a;
-            --accent-color: #00f0ff;
-            --text-color: #e0e0e0;
-            --glow-color: #00e5ff;
-        }
-
         html {
             scroll-behavior: smooth;
         }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            overflow-x: hidden;
-            background-image: url();
-        }
-
-        /* --- Global elements --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        h2 {
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--accent-color);
-        }
-
-        section {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        /* --- Header and Navigation --- */
-        .header {
-            position: fixed;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 95%;
-            max-width: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            z-index: 1000;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease-in-out;
-             box-shadow: 0 0 15px rgba(255, 255, 255, 0.4),
-                0 0 25px rgba(255, 255, 255, 0.2);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-             color: #000;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .logo i {
-            font-size: 2rem;
-            margin-right: 10px;
-            color: #0077ff;
-            text-shadow: 0 0 10px rgba(0, 119, 255, 0.6), 
-                 0 0 20px rgba(0, 119, 255, 0.4);
-            
-        }
-
-        .nav-links {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-
-        .nav-links a {
-            color: #000;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-left: 30px;
-            padding: 10px 15px;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-             color: #0077ff;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            width: 0;
-            height: 2px;
-            background-color: #0077ff;
-            transform: translateX(-50%);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 80%;
-        }
-
-        .get-in-touch {
-            font-size: 1.5rem;
-            color: var(--glow-color);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .get-in-touch:hover {
-            transform: scale(1.1);
-            text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color);
-        }
-
-        /* --- Landing Page / Hero Section --- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOyj0X6r1LTNkwS_Y-JH5gJNPwJ7eUPBVW3A&s');
-            background-size: cover;
+        .parallax {
+            background-attachment: fixed;
             background-position: center;
-            background-attachment: fixed; /* Parallax effect */
-            position: relative;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-in-out;
         }
-
-        .hero-content {
-            z-index: 1;
-            padding: 40px;
-            border-radius: 20px;
-            background: rgba(13, 26, 38, 0.7);
-            border: 1px solid rgba(0, 240, 255, 0.2);
-            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+        .fade-in.visible {
+            opacity: 1;
             transform: translateY(0);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+        }
+        .feedback-container {
+            overflow: hidden;
+        }
+        .feedback-track {
             transition: transform 0.5s ease-in-out;
         }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            margin: 0;
-            color: var(--text-color);
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        .partner-logo {
+            animation: float 6s ease-in-out infinite;
         }
-
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-top: 10px;
-            color: var(--accent-color);
+        .partner-logo:nth-child(even) {
+            animation-delay: -3s;
         }
-
-        /* --- About Us Section --- */
-       /* Container layout */
-#about-us .container {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-}
-
-/* Image styling */
-#about-us img {
-    max-width: 50%;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-
-/* Hover effect for image */
-#about-us img:hover {
-    transform: scale(0.95); /* Zoom out slightly */
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.7), 
-                0 0 60px rgba(0, 255, 255, 0.5), 
-                0 0 100px rgba(0, 255, 255, 0.3); /* Lightning/glow effect */
-}
-
-/* Content styling */
-
-#about-us .content p {
-    position: relative; 
-    top: -150px;
-    left:30px;
-    transition: top 0.3s ease;
-}
-
-/* Shift About Us upward */
-#about-us .content h2 {
-    position: relative;
-    top:-150px;
-    /* top: -10px; Shift up */
-    
-     transition: top 0.3s ease;
-}
-
-
-        /* --- Our Gallery Section --- */
-        #gallery {
-            background-color: var(--secondary-color);
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+        .floating-buttons {
+            position: fixed;
+            right: 1rem;
+            bottom: 1rem;
+            z-index: 1000;
         }
-        .product-card {
-            background: var(--primary-color);
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 240, 255, 0.1);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 240, 255, 0.4);
-        }
-        .product-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .product-card h3 {
-            font-size: 1.2rem;
-            margin: 15px 0 10px;
-        }
-        .product-card p {
-            font-size: 1rem;
-            color: var(--text-color);
-            padding: 0 15px 20px;
-        }
-
-        /* --- Feedback Section --- */
-        /* Feedback Section */
-#feedback {
-   background-color: var(--secondary-color);
-    padding: 60px 20px;
-    color: #fff;
-    text-align: center;
-}
-
-#feedback h2 {
-    color: #00f0ff;
-    font-size: 2rem;
-    
-    margin-top:-30px;
-    text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
-}
-
-/* Slider */
-.feedback-slider {
-    position: relative;
-    max-width: 1500px;
-    margin: auto;
-    overflow: hidden;
-}
-
-.feedback-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    gap: 60px;
-}
-
-/* Feedback Card */
-.feedback-card {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    padding: 25px;
-    min-width: 400px;
-    max-width: 400px;
-    min-height: 250px;
-    flex-shrink: 0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
-    position: relative;
-}
-.feedback-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
-}
-.client-photo {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #00f0ff;
-    margin-bottom: 15px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
-}
-.client-photo:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 25px rgba(0, 240, 255, 0.9);
-}
-
-
-.feedback-card p {
-    font-style: italic;
-    margin-bottom: 10px;
-    color: #ddd;
-}
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.9);
-    overflow: auto;
-    padding-top: 60px;
-}
-
-.modal-content {
-    margin: auto;
-    display: block;
-    max-width: 80%;
-    border-radius: 10px;
-    animation: zoomIn 0.4s ease;
-}
-
-@keyframes zoomIn {
-    from {transform: scale(0.5);}
-    to {transform: scale(1);}
-}
-
-/* Close Button */
-.modal .close {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.feedback-card span {
-    font-size: 0.9rem;
-    color: #00f0ff;
-}
-
-/* Chat bubble style */
-.feedback-card::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 20px;
-    border-width: 10px;
-    border-style: solid;
-    border-color: rgba(255, 255, 255, 0.05) transparent transparent transparent;
-}
-
-/* Arrows */
-.feedback-arrow {
-    background: rgba(0, 240, 255, 0.2);
-    border: none;
-    color: #00f0ff;
-    font-size: 2rem;
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: background 0.3s ease;
-    z-index: 10;
-}
-
-.feedback-arrow:hover {
-    background: rgba(0, 240, 255, 0.4);
-}
-
-.feedback-arrow.left {
-    left: 10px;
-}
-
-.feedback-arrow.right {
-    right: 10px;
-}
-
-        /* our partners  */
-        /* Partners Section */
-#our-partners {
-    background-color: #0d1a26; /* Dark background */
-    padding: 60px 20px;
-    text-align: center;
-}
-
-#our-partners h2 {
-    color: #00f0ff; /* Accent color */
-    font-size: 3rem;
-    margin-top:-40px;
-    margin-bottom: 10px;
-    text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
-}
-
-#our-partners p {
-    color: #ccc;
-    max-width: 700px;
-    margin: 0 auto 40px auto;
-    font-size: 1rem;
-    margin-bottom:10px;
-}
-
-/* Partner Logos */
-.partners-logos {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 90px;
-
-}
-
-.partner-card {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    padding: 20px;
-    width: 250px;
-    height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.partner-card img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    display:block;
-    margin:0 auto;
-    margin-bottom:45px;
-}
-
-.partner-card:hover img {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
-}
-/* Hover effect */
-.partner-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.6),
-                0 0 40px rgba(0, 240, 255, 0.4);
-}
-.partner-card p {
-    display:block;
-    margin-top: 52px;   /* pushes Lenovo text down */
-    text-align: center; /* keeps text centered */
-    font-size: 50px;    /* optional styling */
-    color: #fff;   
-    margin:0;  
-    font-weight:bold;   /* adjust color if needed */
-}
-.partner-card a {
-    display: flex;
-    flex-direction: column; /* stack img and p vertically */
-    align-items: center;    /* keep centered */
-}
-
-.partner-link {
-    margin-top: 8px;
-    color: #007bff;
-    text-decoration: none;
-    font-size: 0.9rem;
-}
-.partner-link:hover {
-    text-decoration: underline;
-}
-
-        /* Partners Section */
-
-
-
-        /* --- Footer --- */
-        footer {
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            padding: 50px 0;
-            text-align: center;
-            border-top: 1px solid rgba(0, 240, 255, 0.1);
-        }
-        .footer-content {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 30px;
-            text-align: left;
-        }
-        .footer-section {
-            flex: 1;
-            min-width: 250px;
-        }
-        .footer-section h3 {
-            color: var(--accent-color);
-            margin-bottom: 20px;
-            position: relative;
-        }
-        .footer-section h3::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 50px;
-            height: 2px;
-            background-color: var(--accent-color);
-        }
-        .social-media a {
-            color: var(--text-color);
-            font-size: 1.5rem;
-            margin-right: 15px;
-            transition: color 0.3s ease;
-        }
-        .social-media a:hover {
-            color: var(--accent-color);
-        }
-
-        /* --- Get In Touch Modal --- */
-        .modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.7);
-    z-index: 999;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 800px;
-    width: 90%;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    position: relative;
-}
-
-.modal-content iframe {
-    border: none;
-    border-radius: 8px;
-}
-
-.modal-close {
-    position: absolute;
-    top: 10px; right: 15px;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                padding: 15px;
-                top: 10px;
-                border-radius: 20px;
-            }
-            .nav-links {
-                margin-top: 10px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .nav-links a {
-                margin: 5px 10px;
-            }
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            .hero-content p {
-                font-size: 1rem;
-            }
-            #about-us .container {
-                flex-direction: column;
-            }
-            #about-us img {
-                max-width: 100%;
-            }
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            .footer-section h3::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            background: rgba(219, 234, 254, 0.9);
         }
     </style>
 </head>
-<body>
-    <!-- Navigation Bar -->
-    <header class="header">
-        <a href="#home" class="logo">
-            <i class="fas fa-rocket"></i>
-            <span>APS Telecom & IT Solutions</span>
+<body class="bg-white">
+    <!-- Floating Contact Buttons -->
+    <div class="floating-buttons flex flex-col space-y-4 sm:space-y-6">
+        <a href="https://wa.me/7982564612" class="bg-green-500 text-white p-3 sm:p-5 rounded-full shadow-lg hover:bg-green-600 transition-colors">
+            <i class="fab fa-whatsapp text-lg sm:text-xl"></i>
         </a>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about-us">About Us</a></li>
-                <li><a href="#gallery">Our Services</a></li>
-                <li><a href="#feedback">Feedback</a></li>
-                <li><a href="#Our partners">Our Partners</a></li>
-            </ul>
-        </nav>
-        <div class="get-in-touch" id="getInTouchBtn">
-            <i class="fas fa-handshake"></i>
-        </div>
-    </header>
+        <a href="tel:+91 7982564612" class="bg-blue-500 text-white p-3 sm:p-5 rounded-full shadow-lg hover:bg-blue-600 transition-colors">
+            <i class="fas fa-phone text-lg sm:text-xl"></i>
+        </a>
+    </div>
 
-    <!-- Home Section (Parallax) -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Powering Tomorrow with Strong Hardware & Seamless Software</h1>
-            <p>One stop soutions for all your IT needs </p>
+    <!-- Navigation -->
+    <nav class="nav-blur fixed w-full z-50 top-0 transition-all duration-300">
+        <div class="max-w-full  px-1 sm:px-2 mt-1">
+            <div class="flex justify-between items-center bg-white/100 backdrop-blur-md shadow-md px-4 sm:px-6 py-2 sm:py-3 h-16 sm:h-20 rounded-2xl">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2 -ml-10">
+                    <img src="logoooooo.png" alt="APS IT Solutions Logo" class="h-20 sm:h-28 w-auto">
+                    <span class="text-lg sm:text-2xl font-semibold text-blue-900 relative -translate-y-1 -translate-x-1">APS Telecom & IT Solutions</span>
+                </div>
+                <!-- Links -->
+                <div class="hidden md:flex space-x-4 lg:space-x-8 items-center">
+                    <a href="#home" class="font-semibold text-blue-900 hover:text-blue-600 transition-colors text-sm lg:text-base">Home</a>
+                    <a href="#about" class="font-semibold text-blue-900 hover:text-blue-600 transition-colors text-sm lg:text-base">About</a>
+                    <a href="#services" class="font-semibold text-blue-900 hover:text-blue-600 transition-colors text-sm lg:text-base">Services</a>
+                    <a href="#partners" class="font-semibold text-blue-900 hover:text-blue-600 transition-colors text-sm lg:text-base">Partners</a>
+                    <a href="#feedback" class="font-semibold text-blue-900 hover:text-blue-600 transition-colors text-sm lg:text-base">Testimonials</a>
+                    <a href="#contact" class="font-semibold text-blue-900 hover:text-blue-600 transition-colors text-sm lg:text-base">Contact</a>
+                </div>
+                <!-- Mobile Menu -->
+                <button class="md:hidden text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-xl sm:text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-[70vh] sm:min-h-screen flex items-center bg-cover bg-center">
+        <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: linear-gradient(rgba(77, 125, 203, 0.2), rgba(147, 197, 253, 0.2)), url('https://i.pinimg.com/736x/23/8b/35/238b35453a22fef83eb319550171b946.jpg');"></div>
+        <div class="relative z-10 container mx-auto px-4 sm:px-6 text-center">
+            <div class="fade-in">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black-800 mb-4 sm:mb-6">
+                    Next-Gen <span class="text-blue-700">IT Hardware</span>
+                </h1>
+                <p class="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8 max-w-3xl mx-auto">
+                    Empowering businesses with cutting-edge technology solutions and premium hardware components
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mt-8 sm:mt-14">
+                    <a href="#services" class="bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg hover:bg-blue-800 transition-colors shadow-lg">Explore Products</a>
+                    <a href="#contact" class="bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg hover:bg-blue-800 transition-colors shadow-lg">Let's Connect</a>
+                </div>
+            </div>
         </div>
     </section>
-    
 
     <!-- About Us Section -->
-    <section id="about-us">
-        <div class="container">
-            <img src="Screenshot 2025-08-15 193036.png" alt="Our team working">
-            <div class="content">
-                <h2>About Us</h2>
-                <p>
-                    APS IT Solution is a leading provider of high-quality IT hardware and services. We are dedicated to delivering cutting-edge technology and unparalleled support to businesses of all sizes. Our mission is to empower your company with the best tools to succeed in a digital-first world.
-                </p>
-                <p>
-                    With years of experience and a passion for technology, our team is committed to finding the perfect solution for your specific needs, whether it's building a new server, upgrading your network infrastructure, or providing essential peripherals.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Gallery Section -->
-    <section id="gallery">
-        <div class="container">
-            <h2>Our Services</h2>
-            <div class="gallery-grid">
-                <!-- Product Card 1 -->
-                 <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1491472253230-a044054ca35f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bGFwdG9wJTIwY29tcHV0ZXJ8ZW58MHx8MHx8fDA%3D" alt="High-Performance Server">
-                    <h3>Commercial Laptop</h3>
-                    <p> Corporate Boardrooms are no longer 
-                        just an image building tool for large 
-                        multinational organizations.</p>
+    <section id="about" class="py-16 sm:py-32 bg-gray-50 scroll-mt-20 sm:scroll-mt-24 relative z-10">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
+                <div class="fade-in">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="About TechVault" class="w-full rounded-lg shadow-lg object-cover transform transition duration-500 hover:scale-105 hover:shadow-2xl">
                 </div>
-                <div class="product-card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6eEXy0QT-nnFplcCmYqDRRs1tinGjhnvwRA&s" alt="High-Performance Server">
-                    <h3>IT Assets on Rent</h3>
-                    <p> Flexible and cost-effective IT 
-                        assets on rent, including laptops, desktops, 
-                        servers, and networking equipment. Ideal for startups, 
-                        businesses, 
-                        and events to scale 
-                        without heavy investment.</p>
-                </div>
-                <!-- <div class="product-card">
-                    <img src="ChatGPT Image Aug 16, 2025, 11_45_29 PM.png" alt="High-Performance Server">
-                    <h3>Telecom Solutions</h3>
-                    <p> Corporate Boardrooms are no longer 
-                        just an image building tool for large 
-                        multinational organizations.</p>
-                </div> -->
-                
-                <div class="product-card">
-                    <img src="https://www.rifeindia.com/cdn/shop/files/download_26_grande.jpg?v=1738473742" alt="High-Performance Server">
-                    <h3>AV Integration & Board Room Solutions</h3>
-                    <p> Corporate Boardrooms are no longer 
-                        just an image building tool for large 
-                        multinational organizations.</p>
-                </div>
-                <!-- Product Card 2 -->
-                <div class="product-card">
-                    <img src="https://icebreakers.tech/wp-content/uploads/2023/12/Networking-Solutions.jpg" alt="Gaming Laptop">
-                    <h3>Network Solutions & Design</h3>
-                    <p>We provide deployment of complex 
-                    networking solutions as well as simple 
-                    networking for small and medium 
-                    businesses. </p>
-                </div>
-                <!-- Product Card 3 -->
-                <div class="product-card">
-                    <img src="https://5.imimg.com/data5/AG/LA/GLADMIN-522662/hardware-solutions.jpg" alt="Network Router">
-                    <h3>Hardware Solutions</h3>
-                    <p>We offer a wide range of Desktops, 
-                    Laptops, Switches, Routers, Server, 
-                    Storage, to get you a single stop for all of 
-                    your IT needs.</p>
-                </div>
-                <!-- Product Card 4 -->
-                <div class="product-card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn8GkTl3nmw6rPyKHv-bDCSB92B2eud_8xJA&s" alt="4K Monitor">
-                    <h3> Internet Security & Firewall</h3>
-                    <p> We help to ensure risk free 
-                    environment to organizations 
-                    both on premise and over 
-                    public/private cloud 
-                    environments.</p>
-                </div>
-                <!-- Product Card 5
-                <div class="product-card">
-                    <img src="https://media.istockphoto.com/id/1311084165/photo/a-security-workplace-with-a-modern-high-tech-control-panel-in-the-form-of-large-monitors-that.jpg?s=612x612&w=0&k=20&c=67_T5DVqFH8ZxJ8iUgr4Cc4NGhI65ZS3EYPtER85mKI=" alt="Mechanical Keyboard">
-                    <h3>Security & Surveillance</h3>
-                    <p>With ever growing expansion 
-                    of business world, the need of 
-                    physical security is an essential 
-                    investment that no enterprise 
-                    can disregard</p>
-                </div> -->
-                <!-- Product Card 6 -->
-                <!-- <div class="product-card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5zixfF6a9dsERhFd2u82KU9PdMhMLMRvUSg&s" alt="External SSD">
-                    <h3> Routing & Switching</h3>
-                    <p>We help everyone in your 
-                    organization to connect with 
-                    each other and important 
-                    applications, irrelevant of their 
-                    physical location over internet 
-                    in a secure manner.</p>
-                </div> -->
-                
-                
-            </div>
-        </div>
-    </section>
-    <!-- our partners -->
-     
-    <section id="our-partners">
-    <div class="partners-container">
-        <h2>Our Partners</h2>
-        <p>We collaborate with leading companies worldwide to deliver the best solutions.</p>
-
-        <div class="partners-logos">
-            <div class="partner-card">
-               <a href="https://www.lenovo.com/in/en/?srsltid=AfmBOoocSlle4ADBNwMKkbXQeEVNeahItaHJC3c0IPDzogQ1FsibCFMR" target="_blank">
-                <img src="https://i.pinimg.com/1200x/12/d0/64/12d0645dd42da1c4796c4a87d2f3f706.jpg" alt="HP Logo">
-                <p>Lenovo</p>
-         </a>
-                
-            </div>
-            <div class="partner-card">
-                <a href="https://www.dellstore.com/deals/monitor-deals.html?gacd=10415953-9016-5761040-285981356-0&dgc=ST&gclsrc=aw.ds&gad_source=1&gad_campaignid=18988323240&gbraid=0AAAAAD1NDEU4YOIQPl6bjy_q8E3YDstFU&gclid=Cj0KCQjw2IDFBhDCARIsABDKOJ6nIH8NizJYj-gKsYSue59pViSc9cKu9Zb_z_8pmV8HRaPvKhABREkaAnYSEALw_wcB" target="_blank">
-                <img src="Screenshot 2025-08-16 125354.png" alt="HP Logo">
-                <p>Dell</p>
-         </a>
-            </div>
-            <div class="partner-card">
-                <a href="https://www.hp.com/in-en/shop/?intel_sem&jumpid=ps_in_go_st_hc_cm018701_cv_aq_bcr&gclsrc=aw.ds&gad_source=1&gad_campaignid=10464128542&gbraid=0AAAAACY0IB0N8W7wh-0RA6fnfv_1HOY1D&gclid=Cj0KCQjw2IDFBhDCARIsABDKOJ4_UPyp625XB_3-PTULPzLv9SedZU8gpE1lezYULVM4Bo4nHaXOu14aAkJUEALw_wcB" target="_blank">
-                <img src="https://logos-world.net/wp-content/uploads/2020/12/Hewlett-Packard-Logo.jpg" alt="HP Logo">
-                <p>HP</p>
-         </a>
-            </div>
-            <div class="partner-card">
-                 <a href="https://www.acer.com/in-en" target="_blank">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDrcX8xoye-3eIbPWyZ3BMK22zoz0zCLFr1w&s" alt="HP Logo">
-                <p>Acer</p>
-         </a>
-            </div>
-            <div class="partner-card">
-                 <a href="https://www.samsung.com/in/?srsltid=AfmBOoo_JWu1BV7YqEV4bTI9L3hxZhKACTM1vDxkmvvn_ZVxs55q-OB3" target="_blank">
-                <img src="https://thumbs.dreamstime.com/b/samsung-logo-white-background-samsung-logo-white-background-editorial-illustration-company-samsung-168841211.jpg" alt="HP Logo">
-                <p>Samsung</p>
-         </a>
-            </div>
-            <div class="partner-card">
-                 <a href="https://www.cisco.com/site/in/en/index.html?ccid=cc003689&dtid=psexsp001647&utm_medium=cpc&utm_source=google&campaign=corporate-brand&gclsrc=aw.ds&gad_source=1&gad_campaignid=19603919241&gbraid=0AAAAApRMQfMTaCe1orKYlftj-l7K9OFmL&gclid=Cj0KCQjw2IDFBhDCARIsABDKOJ5LpXEyj5ZCDGzudp5yfMsFosgXettQ22MfQfZ5fGT6qcmQEarHxgAaAr0bEALw_wcB" target="_blank">
-                <img src="https://newsroom.cisco.com/content/dam/r/newsroom/en/us/assets/a/y2024/m08/Cisco_Logo_no_TM_Sky_Blue-RGB_1200x675.jpg" alt="HP Logo">
-                <p>Cisco</p>
-         </a>
-            </div>
-            <div class="partner-card">
-                <a href="https://www.logitech.com/en-us" target="_blank">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsrb1N22NDuc26h_xtMX4fyVG5O2HQuy11HA&s" alt="HP Logo">
-                <p>Logitech</p>
-         </a>
-            </div>
-            <div class="partner-card">
-                 <a href="https://www.sony.co.in/homepage" target="_blank">
-                <img src="https://1000logos.net/wp-content/uploads/2017/06/Sony-Logo.jpg" alt="HP Logo">
-                <p>Sony</p>
-         </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-    <!-- Feedback Section -->
-    <section id="feedback">
-    <div class="feedback-container">
-        <h2>What Our Clients Say</h2>
-
-        <div class="feedback-slider">
-            <button class="feedback-arrow left" id="feedbackPrev">&#10094;</button>
-
-            <div class="feedback-track">
-                <div class="feedback-card">
-                    <img src="https://iepfclaim.in/wp-content/uploads/2022/01/29-297391_woman-at-clker-vector-free-download-png-clipart.png" alt="Client 1" class="client-photo">
-                    <p>"Space IT Solution transformed our IT infrastructure completely. Highly recommended!"</p>
-                    <span>- Alex Johnson, TechCorp</span>
-                </div>
-                <div class="feedback-card">
-                    <img src="https://img.freepik.com/premium-vector/cartoon-character-features-young-man-smiling-wearing-blue-shirt-against-solid-background-select-customizable-cartoon-illustration_538213-159086.jpg" alt="Client 2" class="client-photo">
-                    <p>"Exceptional service and support, they are our go-to IT partners now."</p>
-                    <span>- Sarah Lee, InnovateX</span>
-                </div>
-                <div class="feedback-card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7H-c2KSbg5sgiFUMLnqow1QPoPkcTHqv8Qw&s" alt="Client 3" class="client-photo">
-                    <p>"Professional, prompt, and reliable — exactly what we needed."</p>
-                    <span>- Michael Smith, DataSoft</span>
-                </div>
-                <div class="feedback-card">
-                    <img src="https://iepfclaim.in/wp-content/uploads/2022/01/29-297391_woman-at-clker-vector-free-download-png-clipart.png" alt="Client 4" class="client-photo">
-                    <p>"They understood our needs perfectly and delivered beyond expectations."</p>
-                    <span>- Priya Sharma, CloudNet</span>
-                </div>
-                <div class="feedback-card">
-                    <img src="https://img.freepik.com/premium-vector/school-boy-vector-illustration_38694-902.jpg" alt="Client 5" class="client-photo">
-                    <p>"Outstanding expertise and seamless execution."</p>
-                    <span>- Daniel Wong, BrightTech</span>
-                </div>
-                <div class="feedback-card">
-                    <img src="client6.jpg" alt="Client 6" class="client-photo">
-                    <p>"Amazing team, quick response, and innovative solutions."</p>
-                    <span>- Emily Davis, NextGen IT</span>
-                </div>
-            </div>
-
-            <button class="feedback-arrow right" id="feedbackNext">&#10095;</button>
-        </div>
-    </div>
-</section>
-
-
-
-    <!-- Footer -->
-     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Contact Information</h3>
-                    <p><i class="fas fa-map-marker-alt"></i>A-41 A, Noida Sector 16 Uttar Pradesh 201301</p>
-                    <p><i class="fas fa-phone"></i> +91 7982564612</p>
-                    <p><i class="fas fa-envelope"></i> sales@apsitsolutions.in</p>
-                    <p><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 6:00 PM</p>
-                </div>
-                
-                
-                <div class="footer-section">
-                    <h3>Services</h3>
-                    <p>Hardware Solutions</p>
-                    <p>Software Solutions </p>
-                    <p>Internet Solutions </p>
-                    <p>Wifi Solutions</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Follow Us</h3>
-                    <p>Stay connected with us on social media for the latest updates and tech news.</p>
-                    <div class="social-links">
-                        <!-- <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a> -->
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                         <a href="https://wa.me/798254612?text=Hello%20I%20am%20interested%20in%20your%20services" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                        </a>
+                <div class="fade-in">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6">About APS IT Solution</h2>
+                    <p class="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6 leading-relaxed">
+                        With over a decade of experience in the IT hardware industry, TechVault has established itself as a trusted partner for businesses seeking reliable, high-performance technology solutions. We specialize in providing enterprise-grade hardware, from servers and networking equipment to storage solutions and custom-built systems.
+                    </p>
+                    <p class="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6 leading-relaxed">
+                        Our team of certified professionals works closely with clients to understand their unique requirements and deliver tailored solutions that drive business growth and operational efficiency.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-blue-600">500+</h3>
+                            <p class="text-sm sm:text-base text-gray-600">Happy Clients</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-blue-600">10+</h3>
+                            <p class="text-sm sm:text-base text-gray-600">Years Experience</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-blue-600">24/7</h3>
+                            <p class="text-sm sm:text-base text-gray-600">Support</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 APS IT Solutions. All rights reserved. | Designed with innovation and excellence.</p>
+        </div>
+    </section>
+
+    <!-- Why APS IT Solutions Section -->
+    <section class="bg-gradient-to-br from-blue-50 to-cyan-100 py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+                <div class="space-y-6 sm:space-y-8">
+                    <div class="text-center lg:text-left">
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-black-800 mb-4">
+                            Why <span class="text-blue-600">APS IT Solutions?</span>
+                        </h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-blue-400 rounded-xl p-4 sm:p-6 text-white shadow-lg transform hover:scale-105 transition-all duration-300">
+                            <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">Innovation Excellence</h3>
+                            <p class="text-sm sm:text-base text-black-50 leading-relaxed">
+                                Cutting-edge technology solutions powered by the latest innovations in AI, cloud computing, and digital transformation to drive your business forward.
+                            </p>
+                        </div>
+                        <div class="bg-blue-400 rounded-xl p-4 sm:p-6 text-white shadow-lg transform hover:scale-105 transition-all duration-300">
+                            <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">Scalable Architecture</h3>
+                            <p class="text-sm sm:text-base text-purple-50 leading-relaxed">
+                                Future-proof solutions designed to grow with your business, from startups to enterprise-level operations with seamless scalability options.
+                            </p>
+                        </div>
+                        <div class="bg-blue-400 rounded-xl p-4 sm:p-6 text-white shadow-lg transform hover:scale-105 transition-all duration-300">
+                            <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">Cost-Effective Solutions</h3>
+                            <p class="text-sm sm:text-base text-black-50 leading-relaxed">
+                                Maximize ROI with our efficient, budget-friendly IT solutions that deliver premium results without compromising on quality or performance.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <img src="zzzzzzzzzz.png" alt="Illustrative Image" class="w-full max-w-xs sm:max-w-sm md:max-w-md object-contain">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-12 sm:py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-16 fade-in">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Services</h2>
+                <p class="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">Boost your business with high-performance commercial laptops.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div class="service-card bg-blue-50 p-6 sm:p-8 rounded-lg shadow-lg border hover:border-blue-500 transition-all duration-300 fade-in h-auto">
+                    <img src="https://images.unsplash.com/photo-1491472253230-a044054ca35f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bGFwdG9wJTIwY29tcHV0ZXJ8ZW58MHx8MHx8fDA=" alt="Commercial Laptop" class="w-full h-40 sm:h-48 object-cover rounded-t-lg">
+                    <h3 class="text-lg sm:text-xl font-bold text-black-800 mt-4 sm:mt-6 mb-2 text-center py-3">Commercial Laptop</h3>
+                    <p class="text-sm sm:text-base text-black-800 text-center mb-0">Boost productivity with high-performance commercial laptops built for speed, security, and reliability.</p>
+                </div>
+                <div class="service-card bg-blue-50 p-6 sm:p-8 rounded-lg shadow-lg border hover:border-blue-500 transition-all duration-300 fade-in h-auto">
+                    <img src="https://icebreakers.tech/wp-content/uploads/2023/12/Networking-Solutions.jpg" alt="Workstation" class="w-full h-40 sm:h-48 object-cover rounded-t-lg">
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-800 mt-4 sm:mt-6 mb-2 text-center py-3">Network Solutions and design</h3>
+                    <p class="text-sm sm:text-base text-black-800 text-center mb-0">We provide deployment of complex networking solutions for small and medium businesses.</p>
+                </div>
+                <div class="service-card bg-blue-50 p-6 sm:p-8 rounded-lg shadow-lg border hover:border-blue-500 transition-all duration-300 fade-in h-auto">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6eEXy0QT-nnFplcCmYqDRRs1tinGjhnvwRA&s" alt="Workstation" class="w-full h-40 sm:h-48 object-cover rounded-t-lg">
+                    <h3 class="text-lg sm:text-xl font-bold text-black-800 mt-4 sm:mt-6 mb-2 text-center py-3">IT Assets on rent</h3>
+                    <p class="text-sm sm:text-base text-black-800 text-center mb-0">Flexible and cost-effective IT assets on rent, including laptops, desktops and servers.</p>
+                </div>
+                <div class="service-card bg-blue-50 p-6 sm:p-8 rounded-lg shadow-lg border hover:border-blue-500 transition-all duration-300 fade-in h-auto">
+                    <img src="telecom 2.jpeg" alt="Workstation" class="w-full h-40 sm:h-48 object-cover rounded-t-lg">
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-800 mt-4 sm:mt-6 mb-2 text-center py-3">Telecom Solutions</h3>
+                    <p class="text-sm sm:text-base text-black-800 text-center mb-0">Comprehensive telecom solutions delivering seamless connectivity and smarter communication for businesses</p>
+                </div>
+                <div class="service-card bg-blue-50 p-6 sm:p-8 rounded-lg shadow-lg border hover:border-blue-500 transition-all duration-300 fade-in h-auto">
+                    <img src="https://5.imimg.com/data5/AG/LA/GLADMIN-522662/hardware-solutions.jpg" alt="Network Router" class="w-full h-40 sm:h-48 object-cover rounded-t-lg">
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-800 mt-4 sm:mt-6 mb-2 text-center py-3">Hardware Solutions</h3>
+                    <p class="text-sm sm:text-base text-black-800 text-center mb-0">We offer a wide range of Desktop, Laptop, Switches, Routers to get you a single stop for all of your IT needs.</p>
+                </div>
+                <div class="service-card bg-blue-50 p-6 sm:p-8 rounded-lg shadow-lg border hover:border-blue-500 transition-all duration-300 fade-in h-auto">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn8GkTl3nmw6rPyKHv-bDCSB92B2eud_8xJA&s" alt="4K Monitor" class="w-full h-40 sm:h-48 object-cover rounded-t-lg">
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-800 mt-4 sm:mt-6 mb-2 text-center py-3">Security Hardware</h3>
+                    <p class="text-sm sm:text-base text-black-800 text-center mb-0">Delivering advanced security hardware designed to provide reliable protection, safeguard critical assets.</p>
+                </div>
+                <div class="service-card bg-blue-50 p-6 sm:p-8 rounded-lg shadow-lg border hover:border-blue-500 transition-all duration-300 fade-in h-auto">
+                    <img src="https://thumbs.dreamstime.com/b/technical-support-center-customer-service-internet-business-technology-concept-technical-support-center-customer-service-internet-119668737.jpg" alt="Technical Support" class="w-full h-40 sm:h-48 object-cover rounded-t-lg">
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-800 mt-4 sm:mt-6 mb-2 text-center py-3">Technical Support</h3>
+                    <p class="text-sm sm:text-base text-black-800 text-center mb-0">Expert technical support that keeps your systems running smoothly, anytime you need help.</p>
+                </div>
+                <div class="service-card bg-blue-50 p-6 sm:p-8 rounded-lg shadow-lg border hover:border-blue-500 transition-all duration-300 fade-in h-auto">
+                    <img src="https://www.motadata.com/wp-content/uploads/2024/02/Blog-Header-Cloud-Infrastructure-Guide-for-Businesses.png" alt="Cloud Infrastructure" class="w-full h-40 sm:h-48 object-cover rounded-t-lg">
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-800 mt-4 sm:mt-6 mb-2 text-center py-3">Cloud Infrastructure</h3>
+                    <p class="text-sm sm:text-base text-black-800 text-center mb-0">Hybrid cloud solutions that combine flexibility, security, and scalability for modern businesses.</p>
+                </div>
+                <div class="service-card bg-blue-50 p-6 sm:p-8 rounded-lg shadow-lg border hover:border-blue-500 transition-all duration-300 fade-in h-auto">
+                    <img src="https://www.rifeindia.com/cdn/shop/files/download_26_grande.jpg?v=1738473742" alt="AV Integration" class="w-full h-40 sm:h-48 object-cover rounded-t-lg">
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-800 mt-4 sm:mt-6 mb-2 text-center py-3">AV Integration & Board Rooms</h3>
+                    <p class="text-sm sm:text-base text-black-800 text-center mb-0">Corporate Boardrooms are no longer just an image building tool for large multinational organizations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partners" class="py-12 sm:py-20 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-16 fade-in">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Partners</h2>
+                <p class="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">Trusted partnerships with industry leaders</p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8">
+                <div class="partner-logo bg-white p-4 sm:p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0EFQcPeBkWL8ENPQYBb-5sdtA-WcoNh6yDA&s" alt="ESSL Logo" class="h-10 sm:h-12 mx-auto mb-2">
+                        <p class="text-xs sm:text-sm text-gray-600">EESL</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-4 sm:p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <img src="https://1000logos.net/wp-content/uploads/2020/08/Sophos-Logo.jpg" alt="Sophos Logo" class="h-10 sm:h-12 mx-auto mb-2">
+                        <p class="text-xs sm:text-sm text-gray-600">Sophos</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-4 sm:p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn938HM1utH0TgUm8Q-4jmM_6DnFWGoxXhXJbHeyMX50ifcQeyUTpdDNDjJ9Oi55UbCos&usqp=CAU" alt="Fortinet Logo" class="h-10 sm:h-12 mx-auto mb-2">
+                        <p class="text-xs sm:text-sm text-gray-600">Fortinet</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-4 sm:p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlzCMs60KcFj3SE9Jd7XAywriRjoasILYzCA&s" alt="Cpplus Logo" class="h-10 sm:h-12 mx-auto mb-2">
+                        <p class="text-xs sm:text-sm text-gray-600">Cpplus</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-4 sm:p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRomWFsMETqJpWtaFDAc_1xZR4d6f_MqhDEUQ&s" alt="TP-Link Logo" class="h-10 sm:h-12 mx-auto mb-2">
+                        <p class="text-xs sm:text-sm text-gray-600">TP-Link</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-4 sm:p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATYAAACjCAMAAAA3vsLfAAAAmVBMVEX///8AAAAAqYLU1NRNTU0ICAgAnnj///65ubl4eHgApHqY1MXF7OYAqID6///6+vpMsplkZGR8yLXm5uav4dTc3Nzz8/P0//9ycnK66N/Ozs4UpYLs7OxVVVXHx8cAn3UYGBgtLS1JSUmjo6Oampo8PDyurq4mJia8vLyJiYk3NzdpaWnW7umd0scAn24ApnlcwauHx7k3spNJW6VHAAADXElEQVR4nO3cbVvaMBiGYSoqQy0dQ0ELIiCgTje2/f8ftx77MJ+0SUhaIhGu02/WPG1vgyUv0moBAAAAAAAAAAAAAAAAAAAAAAAAAAAAaCJvv7txbZTZWk3kQZubwXDrmZyLaeW+aThLhHvXRpls9Vo6uE48rLpr6y/Lq1hVrUhcnImT9F0bKbF1Swe/+N7brGvuFd7FFGd1U9kqgtgK87XhTMRm9/SsPROxbfOqe0AQ21azQfVMxOag+lAlNheV/kZsTia7LHY8sa12Wex4YkuWuyz2aUcJi1OTxWKuvdOJudjKWMwk20VEOoFj07ynECbPt8XPyEtIkhdzsXAjc2+BY9s6qTJclrub8q5XKTZ1vb7w9h1b0eW+q7Epw1NiM1sosZ0aixGbYqJ2N/kqJTaLpfJYkOlMX2//67ddry+8KGJT6iWPPte/J1HE1rq3FYxRHLE9yjZiSaPT6bhek06jxlZxxDaVbebv3/8XW6euVq/4CiOO2G5km5k40LS/HHZsA9lGzlu8XTbxoxfqdVorNmV1NWhvu/65uahtcz5yviNP6jjalWwV8m9b6/ripL50HFls0s6fpHJ0RWw2xvdtxGahjhLkBC+xWahzbnJMWsSW1s/tsGMrzYDIaXFiMxrOlXoLeYzYTPJSPWUChNj08n65nrKWIGNLvQMcj5pNBZgFjq2dDY0G+br7VCmnrlwpvW3sO0yIbZTgHJs/dZ1U6W2/vnn6HVlsroMr/+qlVXkRW/pw5313oV6jSmz3A0fKyDvoHhDZ24rYws07eopsD0h5RyWxuajsfSjFFo2oYquu6BHbVnPNPhsZ2zmxabzodlURm91CvwuL2Gz6pq1rxGa0WpY3Or8jNp3T7mNu/e/II42tbRzIZ5nLxtojjc35P3sNiK2W8ttdvz0g4Xyu2Hpegu0A+VSxbf589TXqxbQHZD+xnaSb1MtmPIpq68x+YvNfixnT22pIi9gant+E2Gohtlrij62BI46twaL8B63KH2BsoXpbctixNTy9UfSxNUjtg2Jz/kStoWx1Wzq43mVslw/n9YXbA2L9JDZzq6ml1UCUzM3ztm7e7q7qu7vK4lmQ/kjNbzrcJEjcGkybhZ1yAwAAAAAAAAAAAAAAAAAAAAAAAAAA2Ju/NTVwxD4pd8cAAAAASUVORK5CYII=" alt="HPE Logo" class="h-10 sm:h-12 mx-auto mb-2">
+                        <p class="text-xs sm:text-sm text-gray-600">HPE</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-4 sm:p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/1200px-Dell_Logo.svg.png" alt="Dell Logo" class="h-10 sm:h-12 mx-auto mb-2">
+                        <p class="text-xs sm:text-sm text-gray-600">Dell</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-4 sm:p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <img src="https://cdn.shopify.com/s/files/1/0558/6413/1764/files/Rewrite_HP_Logo_Design_History_Evolution_8_1024x1024.jpg?v=1695273420" alt="HP Logo" class="h-10 sm:h-12 mx-auto mb-2">
+                        <p class="text-xs sm:text-sm text-gray-600">HP</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-4 sm:p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <i class="fas fa-network-wired text-3xl sm:text-4xl text-blue-500 mb-2"></i>
+                        <p class="text-xs sm:text-sm text-gray-600">Cisco</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-4 sm:p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <img src="https://www.pngall.com/wp-content/uploads/15/Lenovo-Logo-PNG-Cutout.png" alt="Lenovo Logo" class="h-4 sm:h-6 mx-auto mb-2">
+                        <p class="text-xs sm:text-sm text-gray-600">Lenovo</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-4 sm:p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <i class="fas fa-database text-3xl sm:text-4xl text-orange-600 mb-2"></i>
+                        <p class="text-xs sm:text-sm text-gray-600">D-Link</p>
+                    </div>
+                </div>
+                <div class="partner-logo bg-white p-4 sm:p-6 rounded-lg shadow-lg flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <img src="https://cdn.media.amplience.net/i/canon/canon-press-centre-canon-logo_301414581785538?w=550&qlt=100" alt="Canon Logo" class="h-10 sm:h-12 mx-auto mb-2">
+                        <p class="text-xs sm:text-sm text-gray-600">Canon</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="feedback" class="py-12 sm:py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-16 fade-in">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4">What Our Clients Say</h2>
+                <p class="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">Hear from our satisfied customers</p>
+            </div>
+            <div class="relative">
+                <div class="feedback-container">
+                    <div id="feedback-track" class="feedback-track flex space-x-4 sm:space-x-6">
+                        <div class="min-w-[85%] sm:min-w-[50%] md:min-w-[33.333%] bg-blue-50 p-6 sm:p-8 rounded-lg shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%233b82f6' cx='50' cy='50' r='50'/><text x='50' y='60' text-anchor='middle' fill='white' font-size='40' font-family='Arial'>JS</text></svg>" alt="Client" class="w-10 sm:w-12 h-10 sm:h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-bold text-black-800 text-sm sm:text-base">John Smith</h4>
+                                    <p class="text-black-600 text-xs sm:text-sm">CTO, TechCorp</p>
+                                </div>
+                            </div>
+                            <p class="text-black-600 italic text-sm sm:text-base">"TechVault provided exceptional server solutions that transformed our infrastructure. Their technical expertise and support are unmatched."</p>
+                            <div class="flex text-yellow-400 mt-4">
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                            </div>
+                        </div>
+                        <div class="min-w-[85%] sm:min-w-[50%] md:min-w-[33.333%] bg-blue-50 p-6 sm:p-8 rounded-lg shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%23ef4444' cx='50' cy='50' r='50'/><text x='50' y='60' text-anchor='middle' fill='white' font-size='40' font-family='Arial'>SD</text></svg>" alt="Client" class="w-10 sm:w-12 h-10 sm:h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-bold text-black-800 text-sm sm:text-base">Sarah Davis</h4>
+                                    <p class="text-black-600 text-xs sm:text-sm">IT Manager, GlobalTech</p>
+                                </div>
+                            </div>
+                            <p class="text-black-600 italic text-sm sm:text-base">"Outstanding networking solutions and 24/7 support. TechVault truly understands enterprise needs and delivers consistently."</p>
+                            <div class="flex text-yellow-400 mt-4">
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                            </div>
+                        </div>
+                        <div class="min-w-[85%] sm:min-w-[50%] md:min-w-[33.333%] bg-blue-50 p-6 sm:p-8 rounded-lg shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%2310b981' cx='50' cy='50' r='50'/><text x='50' y='60' text-anchor='middle' fill='white' font-size='40' font-family='Arial'>MJ</text></svg>" alt="Client" class="w-10 sm:w-12 h-10 sm:h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-bold text-black-900 text-sm sm:text-base">Mike Johnson</h4>
+                                    <p class="text-black-600 text-xs sm:text-sm">CEO, InnovateCorp</p>
+                                </div>
+                            </div>
+                            <p class="text-black-600 italic text-sm sm:text-base">"The custom storage solution TechVault designed for us exceeded our expectations. Professional, reliable, and innovative."</p>
+                            <div class="flex text-yellow-400 mt-4">
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                            </div>
+                        </div>
+                        <div class="min-w-[85%] sm:min-w-[50%] md:min-w-[33.333%] bg-blue-50 p-6 sm:p-8 rounded-lg shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%23a855f7' cx='50' cy='50' r='50'/><text x='50' y='60' text-anchor='middle' fill='white' font-size='40' font-family='Arial'>LW</text></svg>" alt="Client" class="w-10 sm:w-12 h-10 sm:h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-bold text-black-800 text-sm sm:text-base">Lisa Wang</h4>
+                                    <p class="text-black-600 text-xs sm:text-sm">Director, DataSystems</p>
+                                </div>
+                            </div>
+                            <p class="text-black-600 italic text-sm sm:text-base">"Excellent workstation solutions that boosted our team's productivity. TechVault's expertise in high-performance computing is remarkable."</p>
+                            <div class="flex text-yellow-400 mt-4">
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                            </div>
+                        </div>
+                        <div class="min-w-[85%] sm:min-w-[50%] md:min-w-[33.333%] bg-blue-50 p-6 sm:p-8 rounded-lg shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%23f59e0b' cx='50' cy='50' r='50'/><text x='50' y='60' text-anchor='middle' fill='white' font-size='40' font-family='Arial'>RB</text></svg>" alt="Client" class="w-10 sm:w-12 h-10 sm:h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-bold text-black-800 text-sm sm:text-base">Robert Brown</h4>
+                                    <p class="text-black-600 text-xs sm:text-sm">VP Technology, SecureTech</p>
+                                </div>
+                            </div>
+                            <p class="text-black-600 italic text-sm sm:text-base">"Their security hardware solutions have significantly enhanced our infrastructure protection. Highly recommended for enterprise security."</p>
+                            <div class="flex text-yellow-400 mt-4">
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                            </div>
+                        </div>
+                        <div class="min-w-[85%] sm:min-w-[50%] md:min-w-[33.333%] bg-blue-50 p-6 sm:p-8 rounded-lg shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%2306b6d4' cx='50' cy='50' r='50'/><text x='50' y='60' text-anchor='middle' fill='white' font-size='40' font-family='Arial'>AG</text></svg>" alt="Client" class="w-10 sm:w-12 h-10 sm:h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-bold text-black-800 text-sm sm:text-base">Amanda Garcia</h4>
+                                    <p class="text-black-600 text-xs sm:text-sm">CIO, CloudFirst</p>
+                                </div>
+                            </div>
+                            <p class="text-black-600 italic text-sm sm:text-base">"TechVault's cloud infrastructure solutions helped us seamlessly migrate to hybrid cloud. Exceptional service and technical support."</p>
+                            <div class="flex text-yellow-400 mt-4">
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                                <i class="fas fa-star text-sm sm:text-base"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="prev-feedback" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-2 sm:p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors">
+                    <i class="fas fa-chevron-left text-sm sm:text-base"></i>
+                </button>
+                <button id="next-feedback" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-2 sm:p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors">
+                    <i class="fas fa-chevron-right text-sm sm:text-base"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-slate-800 text-white py-12 sm:py-16">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4 sm:mb-6">
+                        <img src="logoooooo.png" alt="Company Logo" class="h-12 sm:h-16 w-auto transform scale-125">
+                        <span class="text-lg sm:text-2xl font-bold">APS Telecom & IT Solutions</span>
+                    </div>
+                    <p class="text-gray-300 text-sm sm:text-base mb-4">Leading IT hardware solutions provider, delivering cutting-edge technology to businesses worldwide.</p>
+                    <div class="flex space-x-3 sm:space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-facebook text-lg sm:text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-twitter text-lg sm:text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-linkedin text-lg sm:text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-instagram text-lg sm:text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-youtube text-lg sm:text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-4 sm:mb-6">Quick Links</h3>
+                    <ul class="space-y-2 sm:space-y-3">
+                        <li><a href="#home" class="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base">Home</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base">About Us</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base">Services</a></li>
+                        <li><a href="#partners" class="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base">Partners</a></li>
+                        <li><a href="#feedback" class="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-4 sm:mb-6">Services</h3>
+                    <ul class="space-y-2 sm:space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base">Server Solutions</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base">Networking Equipment</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base">Storage Solutions</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base">Technical Support</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base">Custom Solutions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-4 sm:mb-6">Contact Info</h3>
+                    <div class="space-y-3 sm:space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-map-marker-alt text-blue-400 text-sm sm:text-base"></i>
+                            <span class="text-gray-300 text-sm sm:text-base">A-44 A office no 29 sector 16 Noida 201301</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-blue-400 text-sm sm:text-base"></i>
+                            <span class="text-gray-300 text-sm sm:text-base">+91 7982564612</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-blue-400 text-sm sm:text-base"></i>
+                            <span class="text-gray-300 text-sm sm:text-base">sales@apsitsolutions.in</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-clock text-blue-400 text-sm sm:text-base"></i>
+                            <div class="text-gray-300 text-sm sm:text-base">
+                                <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                                <p>Sat: 10:00 AM - 4:00 PM</p>
+                                <p>Sun: Closed</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-headset text-blue-400 text-sm sm:text-base"></i>
+                            <span class="text-gray-300 text-sm sm:text-base">24/7 Emergency Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 sm:mt-12 pt-6 sm:pt-8 text-center">
+                <p class="text-gray-300 text-sm sm:text-base">&copy; 2025 TechVault. All rights reserved. | Privacy Policy | Terms of Service</p>
             </div>
         </div>
     </footer>
 
-
-    <!-- Get In Touch Modal -->
-    <!-- Trigger button -->
-<a href="javascript:void(0);" id="openModalBtn" class="get-in-touch-btn">
-    Get in Touch
-</a>
-
-<!-- Modal Overlay -->
-<div class="modal-overlay" id="modalOverlay">
-    <div class="modal-content">
-        <span class="modal-close" id="modalCloseBtn">&times;</span>
-        
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScM6cdqxw1sXZmhKPMS0YCj2uwOY6cfH8TO0Wk1Nb2DvsA_qw/viewform?embedded=true" width="640" 
-        height="818" frameborder="0" marginheight="0"
-         marginwidth="0">Loading…</iframe>
-    </div>
-</div>
-<!-- Image Zoom Modal -->
-<div id="imgModal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="modalImg">
-</div>
-
-
-
     <script>
-        // JavaScript for modal functionality
-       
-        const track = document.querySelector('.feedback-track');
-const prevBtn = document.getElementById('feedbackPrev');
-const nextBtn = document.getElementById('feedbackNext');
+        // Smooth scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-let position = 0;
-const cardWidth = 320; // Card width + gap
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-nextBtn.addEventListener('click', () => {
-    if (position > -(cardWidth * (track.children.length - 3))) {
-        position -= cardWidth;
-        track.style.transform = `translateX(${position}px)`;
-    }
-});
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
 
-prevBtn.addEventListener('click', () => {
-    if (position < 0) {
-        position += cardWidth;
-        track.style.transform = `translateX(${position}px)`;
-    }
-});
-let slideIndex = 0;
+        // Testimonial slider functionality
+        let currentSlide = 0;
+        const totalSlides = 6;
+        const slideWidth = window.innerWidth < 640 ? 85 : window.innerWidth < 768 ? 50 : 33.333;
+        const track = document.getElementById('feedback-track');
+        const prevBtn = document.getElementById('prev-feedback');
+        const nextBtn = document.getElementById('next-feedback');
 
-function moveSlide(direction) {
-  const wrapper = document.querySelector(".feedback-wrapper");
-  const totalCards = document.querySelectorAll(".feedback-card").length;
-  const cardsPerView = 3;
-  const maxIndex = totalCards - cardsPerView;
+        function updateSlider() {
+            const maxSlide = window.innerWidth < 640 ? totalSlides - 1 : window.innerWidth < 768 ? totalSlides - 2 : totalSlides - 3;
+            if (currentSlide > maxSlide) currentSlide = maxSlide;
+            if (currentSlide < 0) currentSlide = 0;
+            track.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+        }
 
-  slideIndex += direction;
+        nextBtn.addEventListener('click', () => {
+            const maxSlide = window.innerWidth < 640 ? totalSlides - 1 : window.innerWidth < 768 ? totalSlides - 2 : totalSlides - 3;
+            if (currentSlide < maxSlide) {
+                currentSlide++;
+                updateSlider();
+            }
+        });
 
-  if (slideIndex < 0) slideIndex = 0;
-  if (slideIndex > maxIndex) slideIndex = maxIndex;
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlider();
+            }
+        });
 
-  wrapper.style.transform = `translateX(-${slideIndex * (100 / cardsPerView)}%)`;
-}
-document.addEventListener('DOMContentLoaded', () => {
-      /* === Modal Functionality === */
-      const getInTouchBtn = document.getElementById('getInTouchBtn');
-      const modalOverlay = document.getElementById('modalOverlay');
-      const modalCloseBtn = document.getElementById('modalCloseBtn');
+        setInterval(() => {
+            const maxSlide = window.innerWidth < 640 ? totalSlides - 1 : window.innerWidth < 768 ? totalSlides - 2 : totalSlides - 3;
+            currentSlide = (currentSlide + 1) % (maxSlide + 1);
+            updateSlider();
+        }, 5000);
 
-      // Open modal
-      getInTouchBtn.addEventListener('click', () => {
-          modalOverlay.style.display = "flex";
-      });
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(219, 234, 254, 0.95)';
+                nav.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.background = 'rgba(219, 234, 254, 0.9)';
+                nav.style.boxShadow = 'none';
+            }
+        });
 
-      // Close modal
-      modalCloseBtn.addEventListener('click', () => {
-          modalOverlay.style.display = "none";
-      });
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('#home');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
 
-      // Close when clicking outside content
-      modalOverlay.addEventListener('click', (e) => {
-          if (e.target === modalOverlay) {
-              modalOverlay.style.display = "none";
-          }
-      });
-    });
-// Modal elements
-const imgModal = document.getElementById("imgModal");
-const modalImg = document.getElementById("modalImg");
-const closeBtn = document.querySelector(".modal .close");
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
 
-// Open modal on client-photo click
-document.querySelectorAll(".client-photo").forEach(img => {
-  img.addEventListener("click", function() {
-    imgModal.style.display = "block";
-    modalImg.src = this.src;
-  });
-});
+        // Responsive slider adjustment
+        window.addEventListener('resize', () => {
+            currentSlide = 0;
+            updateSlider();
+        });
 
-// Close modal on X
-closeBtn.addEventListener("click", () => {
-  imgModal.style.display = "none";
-});
-
-// Close when clicking outside image
-imgModal.addEventListener("click", (e) => {
-  if (e.target === imgModal) {
-    imgModal.style.display = "none";
-  }
-});
-
+        // Initialize
+        updateSlider();
     </script>
 </body>
 </html>
